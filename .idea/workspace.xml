@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/CPolyline.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/MFCImageMap/CPolyline.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/DOM-big.jgw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/DOM-big.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/MFCImageMap.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/MFCImageMap/MFCImageMap.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/MFCImageMap.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/MFCImageMap/MFCImageMap.vcxproj.filters" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/MFCImageMap/entity.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/MFCImageMap/entity.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/dataHomework/cities.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/dataHomework/cities.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/dataHomework/cities.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/dataHomework/cities.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/dataHomework/graph.htm" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/dataHomework/graph.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/dataHomework/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/dataHomework/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../C/实习代码.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/META-INF/DrawOnline.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Network/Sever.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Network/Sever.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DrawOnline.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MapErrorCorrect.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/我的作品/AutoSave.png" beforeDir="false" afterPath="$PROJECT_DIR$/我的作品/AutoSave.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../week3-add/src/One1/Beta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../week3-add/src/One1/Beta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,18 +75,18 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/.idea/compiler.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.idea/description.html" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/AppMain.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FXStage/MyMenuBar.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FXStage/MyButtons.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/AppMain.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FXStage/ToolButton.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/icon/IconImage.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FXStage/UpdateImage.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.idea/compiler.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1blE74icDvVGtWAv9FQbBSkqIL8" />
@@ -126,9 +113,9 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../springboot-vue-sample" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -139,7 +126,7 @@
       <recent name="D:\code\publish\Study\Java\DrawOnline\src\Network" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.Main">
+  <component name="RunManager" selected="应用程序.AppMain">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -167,14 +154,14 @@
     </configuration>
     <configuration name="AppMain" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AppMain" />
-      <module name="DrawOnline" />
+      <module name="MapErrorCorrect" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
-      <module name="DrawOnline" />
+      <module name="MapErrorCorrect" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -190,7 +177,7 @@
     </configuration>
     <configuration name="SeverApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Network.SeverApp" />
-      <module name="DrawOnline" />
+      <module name="MapErrorCorrect" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -204,7 +191,7 @@
     </configuration>
     <configuration name="SeverFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Network.SeverFX" />
-      <module name="DrawOnline" />
+      <module name="MapErrorCorrect" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -218,6 +205,17 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -259,6 +257,11 @@
       <item itemvalue="应用程序.SeverApp" />
       <item itemvalue="应用程序.SeverFX" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.AppMain" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -308,6 +311,7 @@
       <workItem from="1618308855154" duration="159000" />
       <workItem from="1618420713269" duration="259000" />
       <workItem from="1618805656006" duration="2481000" />
+      <workItem from="1618823134788" duration="105000" />
     </task>
     <servers />
   </component>
@@ -318,6 +322,9 @@
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../../.." />
+    </ignored-roots>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

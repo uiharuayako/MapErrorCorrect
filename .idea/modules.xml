@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DrawOnline.iml" filepath="$PROJECT_DIR$/DrawOnline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MapErrorCorrect.iml" filepath="$PROJECT_DIR$/MapErrorCorrect.iml" />
     </modules>
   </component>
 </project>
