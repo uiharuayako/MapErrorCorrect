@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/CPolyline.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/MFCImageMap/CPolyline.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/DOM-big.jgw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/DOM-big.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/MFCImageMap.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/MFCImageMap/MFCImageMap.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/MFCImageMap.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/MFCImageMap/MFCImageMap.vcxproj.filters" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/MFCImageMap/entity.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/MFCImageMap/entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/MFCImageMap/entity.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/dataHomework/cities.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/dataHomework/cities.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/dataHomework/cities.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/dataHomework/cities.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/dataHomework/graph.htm" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/dataHomework/graph.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/dataHomework/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/dataHomework/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/实习代码.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/META-INF/DrawOnline.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Network/Sever.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Network/Sever.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/我的作品/AutoSave.png" beforeDir="false" afterPath="$PROJECT_DIR$/我的作品/AutoSave.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../week3-add/src/One1/Beta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../week3-add/src/One1/Beta.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaFXApplication" />
+        <option value="Class" />
+        <option value="FxmlFile" />
+      </list>
+    </option>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.idea/compiler.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.idea/description.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/AppMain.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/FXStage/MyMenuBar.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/FXStage/MyButtons.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/FXStage/ToolButton.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/icon/IconImage.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/FXStage/UpdateImage.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main.fxml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectId" id="1blE74icDvVGtWAv9FQbBSkqIL8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="添加" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../springboot-vue-sample" />
+    <property name="recentsLimit" value="5" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Network" />
+      <recent name="FXStage" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\code\publish\Study\Java\DrawOnline\src\Network" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.Main">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+    <configuration name="AppMain" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AppMain" />
+      <module name="DrawOnline" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="sample.Main" />
+      <module name="DrawOnline" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SeverApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Network.SeverApp" />
+      <module name="DrawOnline" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Network.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SeverFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Network.SeverFX" />
+      <module name="DrawOnline" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Network.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="应用程序.Main" />
+      <item itemvalue="应用程序.AppMain" />
+      <item itemvalue="应用程序.SeverApp" />
+      <item itemvalue="应用程序.SeverFX" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+      <created>1359379246138</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1359379246138</updated>
+      <workItem from="1359379250712" duration="1302000" />
+      <workItem from="1589198111338" duration="14924000" />
+      <workItem from="1589247993010" duration="20629000" />
+      <workItem from="1589299695771" duration="279000" />
+      <workItem from="1589640568952" duration="1065000" />
+      <workItem from="1589725711446" duration="16706000" />
+      <workItem from="1589742835916" duration="864000" />
+      <workItem from="1589760345992" duration="28732000" />
+      <workItem from="1589847922533" duration="6198000" />
+      <workItem from="1590401644246" duration="10969000" />
+      <workItem from="1590577066122" duration="7087000" />
+      <workItem from="1590845348851" duration="2585000" />
+      <workItem from="1590852105308" duration="13939000" />
+      <workItem from="1590887567226" duration="5704000" />
+      <workItem from="1590935131610" duration="144000" />
+      <workItem from="1591006759949" duration="4611000" />
+      <workItem from="1591063098821" duration="6769000" />
+      <workItem from="1592228101769" duration="605000" />
+      <workItem from="1601655746680" duration="599000" />
+      <workItem from="1608128715376" duration="205000" />
+      <workItem from="1611080100031" duration="51000" />
+      <workItem from="1611080733270" duration="42000" />
+      <workItem from="1611085108655" duration="34000" />
+      <workItem from="1611085163840" duration="38000" />
+      <workItem from="1611085229816" duration="186000" />
+      <workItem from="1612947182123" duration="998000" />
+      <workItem from="1616305100106" duration="1091000" />
+      <workItem from="1616306577689" duration="126000" />
+      <workItem from="1617646452723" duration="332000" />
+      <workItem from="1618305698917" duration="538000" />
+      <workItem from="1618306269587" duration="460000" />
+      <workItem from="1618306750354" duration="1172000" />
+      <workItem from="1618308560421" duration="227000" />
+      <workItem from="1618308822060" duration="18000" />
+      <workItem from="1618308855154" duration="159000" />
+      <workItem from="1618420713269" duration="259000" />
+      <workItem from="1618805656006" duration="2481000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
