@@ -126,8 +126,10 @@ public class MyCanvas {
         }
         //以下是绘图主函数
         tools.addPeople(MyStatus.nickName, MyStatus.id);
+        System.out.println("fin");
         //当鼠标移动
-        drawingCanvas.setOnMouseMoved(event -> {
+        drawingCanvas.setOnMouseMoved(event ->
+        {
             update();
             if (numPoints <= 9) {
                 polyLabel.setText("多边形状态: 边数:0" + numPoints + "/20  " + (MyStatus.drawPoly ? "下次按键绘图" : "下次按键记录"));
@@ -174,7 +176,7 @@ public class MyCanvas {
             if (MyStatus.toolName.equals("RUBBER")) {
                 gc.setStroke(Color.WHITE);
             }
-            if (MyStatus.toolName.equals("LINE")){
+            if (MyStatus.toolName.equals("LINE")) {
                 // 储存一个点
                 MyStatus.addPoint((int) x1, (int) y1);
             }
@@ -226,7 +228,9 @@ public class MyCanvas {
         content.getChildren().add(c1);
         /**/
         //当鼠标拖动，触发事件
-        drawingCanvas.setOnMouseDragged(event -> {
+        drawingCanvas.setOnMouseDragged(event ->
+
+        {
             //提供状态栏的
             curPos.setText(String.format("(%03d, %03d)", (int) event.getX(), (int) event.getY()));
             if ("PEN".equals(MyStatus.toolName) || MyStatus.toolName.equals("RUBBER")) {
@@ -299,6 +303,133 @@ public class MyCanvas {
                 autoSave();
             }
         });
+        //以下为最艰难的部分：拿文件内容绘图，一次创建canvas过程中只调用一次这个函数
+        //之前就想做这个功能，技术原因一直没做
+        File file=new File(MyStatus.mapName+".mec");
+        if (file.exists()) {
+            myEditBar.loadInfo();
+        }
+        for (InfoLine myLine : myEditBar.myInfo) {
+            // 遍历myInfo
+            loadLine(myLine);
+            // 开始模拟一个正常画图
+            x1 = MyStatus.points.get(0).getX();
+            y1 = MyStatus.points.get(0).getY();
+            if(MyStatus.points.size()>1) {
+                x2 = MyStatus.points.get(1).getX();
+                y2 = MyStatus.points.get(1).getY();
+            }
+            double width = x2 - x1;
+            double height = y2 - y1;
+            Canvas c = new Canvas(drawingCanvasWidth, drawingCanvasHeight);
+            gc = c.getGraphicsContext2D();
+            //将新的Canvas和GraphicsContext的鼠标事件同步以实现多次绘图
+            c.setOnMousePressed(drawingCanvas.getOnMousePressed());
+            c.setOnMouseDragged(drawingCanvas.getOnMouseDragged());
+            c.setOnMouseReleased(drawingCanvas.getOnMouseReleased());
+            c.setOnMouseMoved(drawingCanvas.getOnMouseMoved());
+            c.setOnMouseExited(drawingCanvas.getOnMouseExited());
+            if (MyStatus.toolName.equals("OVAL") || MyStatus.toolName.equals("RECTANGLEZ") || MyStatus.toolName.equals("RECTANGLEY")) {
+                if (!MyStatus.fill) {
+                    gc.setLineWidth(MyStatus.lineSize);
+                    setStatus(c, MyStatus.color, false);
+                } else if (MyStatus.fill) {
+                    gc.setLineWidth(MyStatus.lineSize);
+                    setStatus(c, MyStatus.color, true);
+                }
+            } else if (MyStatus.toolName.equals("PIN")) {
+                setStatus(c, MyStatus.color, true);
+            } else {
+                gc.setLineWidth(MyStatus.lineSize);
+                setStatus(c, MyStatus.color, false);
+            }
+
+            if (MyStatus.toolName.equals("RUBBER")) {
+                gc.setStroke(Color.WHITE);
+            }
+            if (MyStatus.toolName.equals("LINE")) {
+                gc.moveTo(x1, y1);
+                gc.lineTo(x2, y2);
+                gc.stroke();
+            }
+            //以上是一些设置
+            if (MyStatus.toolName.equals("TEXT")) {
+                gc.setLineWidth(1);
+                gc.setFont(Font.font(MyStatus.fontFamily, MyStatus.fontSize));
+                gc.setStroke(MyStatus.color);
+                gc.strokeText(MyStatus.myText, x1, y1);
+            } else if (MyStatus.toolName.equals("PIN")) {
+                gc.fillOval(x1 - 2.5 * MyStatus.lineSize, y1 - 2.5 * MyStatus.lineSize, 5 * MyStatus.lineSize, 5 * MyStatus.lineSize);
+            }
+            if (MyStatus.toolName.equals("POLYGON")) {
+                for (int i = 0; i < MyStatus.points.size(); i++) {
+                    x[i] = MyStatus.points.get(i).getX();
+                    y[i] = MyStatus.points.get(i).getY();
+                }
+                if (MyStatus.fill) {
+                    setStatus(c, MyStatus.color, true);
+                    gc.fillPolygon(x, y, MyStatus.points.size());
+                } else {
+                    setStatus(c, MyStatus.color, false);
+                    gc.strokePolygon(x, y, MyStatus.points.size());
+                }
+            }
+            // 以下为改写的原来是鼠标释放的内容
+            if (MyStatus.toolName.equals("OVAL")) {
+                if (width < 0) {
+                    width = -width;
+                    x1 = x1 - width;
+                }
+                if (height < 0) {
+                    height = -height;
+                    y1 = y1 - height;
+                }
+                if (MyStatus.fill) {
+                    gc.fillOval(x1, y1, width, height);
+                } else {
+                    gc.strokeOval(x1, y1, width, height);
+                }
+            } else if (MyStatus.toolName.equals("RECTANGLEZ")) {
+                if (width < 0) {
+                    width = -width;
+                    x1 = x1 - width;
+                }
+                if (height < 0) {
+                    height = -height;
+                    y1 = y1 - height;
+                }
+                if (MyStatus.fill) {
+                    gc.fillRect(x1, y1, width, height);
+                } else {
+                    gc.strokeRect(x1, y1, width, height);
+                }
+            } else if (MyStatus.toolName.equals("RECTANGLEY")) {
+                if (width < 0) {
+                    width = -width;
+                    x1 = x1 - width;
+                }
+                if (height < 0) {
+                    height = -height;
+                    y1 = y1 - height;
+                }
+                if (MyStatus.fill) {
+                    gc.fillRoundRect(x1, y1, width, height, 30, 30);
+                } else {
+                    gc.strokeRoundRect(x1, y1, width, height, 30, 30);
+                }
+            }
+            // 笔画情况
+            if ("PEN".equals(MyStatus.toolName) || "RUBBER".equals(MyStatus.toolName)) {
+                for(int i=0;i<MyStatus.points.size();i++){
+                    MyPoint poi=MyStatus.points.get(i);
+                    gc.lineTo(poi.getX(), poi.getY());
+                }
+            }
+            listCanvas.add(c);
+            content.getChildren().add(c);
+            gc.stroke();
+            MyStatus.points.clear();
+        }
     }
 
     public void connectNet() {
@@ -524,7 +655,12 @@ public class MyCanvas {
         MyStatus.points.clear();
     }
 
-    // 如上所述，必须完成2个功能，一个是把x，y列表转换为points串结构，第二个是把points串结构还原为points列表
+    // 这个函数旨在把thisLine里的两种信息load进MyStatus里
+    public void loadLine(InfoLine thisLine) {
+        MyStatus.setStatus(thisLine.statusStr);
+        MyStatus.str2Points(thisLine.pointStr);
+    }
+    // 如上所述，必须完成2个功能，一个是把x，y列表转换为points串结构，第二个是把points串结构还原为points
 }
 /*    public void sendMessage(double x1,double y1,double x2,double y2) {
         try {

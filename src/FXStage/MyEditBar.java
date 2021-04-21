@@ -34,9 +34,10 @@ public class MyEditBar {
     Button loadButton;
     HBox fileButtons;
     // 储存搜索到的行数
-    int searchNum=0;
+    int searchNum = 0;
     InfoLine searchLine;
     ArrayList<InfoLine> myInfo = new ArrayList<>();
+
     public MyEditBar() {
         // 整体
         root = new VBox();
@@ -47,7 +48,7 @@ public class MyEditBar {
         // 初始化各个控件
         Label titleLabel = new Label("编辑栏");
         titleLabel.setStyle("-fx-font-weight:bold");
-        titleLabel.setFont(Font.font("SimHei",25));
+        titleLabel.setFont(Font.font("SimHei", 25));
         titleLabel.setAlignment(Pos.TOP_CENTER);
         infoLabel = getLabel("编辑错误信息", 20);
         // 编辑错误描述
@@ -61,15 +62,15 @@ public class MyEditBar {
         searchB.setOnAction(event -> {
             loadInfo();
             // 获取待搜索字符串
-            String targetStr=searchBar.getText();
+            String targetStr = searchBar.getText();
             // 暂时禁用保存按钮
             saveButton.setDisable(true);
             // 开始搜索，不用for in，为的是获取行号
-            for(int i=0;i < myInfo.size();i++){
+            for (int i = 0; i < myInfo.size(); i++) {
                 // 如果找到了
-                if(myInfo.get(i).infoStr.contains(targetStr)){
+                if (myInfo.get(i).infoStr.contains(targetStr)) {
                     saveButton.setDisable(false);
-                    searchNum=i;
+                    searchNum = i;
                     searchLine = myInfo.get(i);
                     update();
                     break;
@@ -81,45 +82,55 @@ public class MyEditBar {
         // 切换条目的Button
         firstB = new Button("首条");
         firstB.setOnAction(event -> {
-            searchNum=0;
+            searchNum = 0;
             update();
         });
         prevB = new Button("←");
         prevB.setOnAction(event -> {
-            if(searchNum>0){
+            if (searchNum > 0) {
                 searchNum--;
-
+                update();
             }
         });
         nextB = new Button("→");
+        nextB.setOnAction(event -> {
+            if (searchNum < myInfo.size() - 1) {
+                searchNum++;
+                update();
+            }
+        });
         lastB = new Button("末条");
-        changedBox.getChildren().addAll(searchB,firstB, prevB, nextB, lastB);
+        lastB.setOnAction(event -> {
+            searchNum = myInfo.size() - 1;
+            update();
+        });
+        changedBox.getChildren().addAll(searchB, firstB, prevB, nextB, lastB);
         changedBox.setAlignment(Pos.CENTER);
         changedBox.setSpacing(10);
         // 点信息的HBox
-        pointBox=new HBox();
-        pointLabel=getLabel("位置:",20);
-        pointInfo=new TextField();
-        pointBox.getChildren().addAll(pointLabel,pointInfo);
+        pointBox = new HBox();
+        pointLabel = getLabel("位置:", 20);
+        pointInfo = new TextField();
+        pointBox.getChildren().addAll(pointLabel, pointInfo);
         pointBox.setAlignment(Pos.CENTER);
         pointBox.setSpacing(20);
         // 备注信息
-        infoOutLabel=getLabel("描述",20);
-        infoOutArea=new TextArea();
+        infoOutLabel = getLabel("描述", 20);
+        infoOutArea = new TextArea();
         // 文件相关操作
-        fileButtons=new HBox();
-        saveButton=new Button("保存更改");
-        saveButton.setOnAction(event ->{
+        fileButtons = new HBox();
+        saveButton = new Button("保存更改");
+        saveButton.setOnAction(event -> {
             // 当按下保存按钮
             // 首先将point中的更改写入搜索到的line，当然，也可能是其他line
-            searchLine.pointStr=pointInfo.getText();
-            searchLine.infoStr=infoOutArea.getText();
+            searchLine.pointStr = pointInfo.getText();
+            searchLine.infoStr = infoOutArea.getText();
             // 因为不知道写入了几次，因此将内存中的info的整体list写入文件
             try {
-                File file=new File(MyStatus.mapName + ".mec");
-                FileWriter fileWriter =new FileWriter(file);
+                File file = new File(MyStatus.mapName + ".mec");
+                FileWriter fileWriter = new FileWriter(file);
                 PrintWriter pw = new PrintWriter(fileWriter);
-                for(InfoLine thisLine:myInfo){
+                for (InfoLine thisLine : myInfo) {
                     pw.println(thisLine.getLineStr());
                     pw.flush();
                 }
@@ -132,11 +143,11 @@ public class MyEditBar {
         });
         // 初始禁止更改
         saveButton.setDisable(true);
-        loadButton=new Button("导入文件");
-        fileButtons.getChildren().addAll(saveButton,loadButton);
+        loadButton = new Button("导入文件");
+        fileButtons.getChildren().addAll(saveButton, loadButton);
         fileButtons.setAlignment(Pos.CENTER);
         fileButtons.setSpacing(80);
-        root.getChildren().addAll(titleLabel,infoLabel, infoArea,new Separator(), searchLabel, searchBar,changedBox,new Separator(),pointBox,infoOutLabel,infoOutArea,fileButtons);
+        root.getChildren().addAll(titleLabel, infoLabel, infoArea, new Separator(), searchLabel, searchBar, changedBox, new Separator(), pointBox, infoOutLabel, infoOutArea, fileButtons);
     }
 
     public VBox getRoot() {
@@ -149,23 +160,43 @@ public class MyEditBar {
         result.setStyle("-fx-font-weight:300");
         return result;
     }
+
     // 已经用catch环绕
-    void loadInfo(){
+    void loadInfo() {
+        myInfo.clear();
         try {
-            File file=new File(MyStatus.mapName + ".mec");
+            File file = new File(MyStatus.mapName + ".mec");
             BufferedReader br = new BufferedReader(new FileReader(file));
             String thisLine;
-            while ((thisLine = br.readLine())!=null){
-                InfoLine changedLine=new InfoLine(thisLine);
+            while ((thisLine = br.readLine()) != null) {
+                InfoLine changedLine = new InfoLine(thisLine);
                 myInfo.add(changedLine);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     void update() {
-        searchLine= myInfo.get(searchNum);
+        searchLine = myInfo.get(searchNum);
         pointInfo.setText(searchLine.pointStr);
         infoOutArea.setText(searchLine.infoStr);
+        searchLabel.setText("搜索条目 类型:" + MyStatus.subString(searchLine.statusStr, "$开始$", "$工具名$") + "(" + (searchNum + 1) + "/" + myInfo.size() + ")");
+        // 如果当前已经到最后一条，禁用下一条以及末尾按键
+        if (searchNum == myInfo.size() - 1) {
+            nextB.setDisable(true);
+            lastB.setDisable(true);
+        } else {
+            nextB.setDisable(false);
+            lastB.setDisable(false);
+        }
+        // 如果当前已经到第一条，禁用第一条以及首个按键
+        if (searchNum == 0) {
+            prevB.setDisable(true);
+            firstB.setDisable(true);
+        } else {
+            prevB.setDisable(false);
+            firstB.setDisable(false);
+        }
     }
 }
