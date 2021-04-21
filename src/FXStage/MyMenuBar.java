@@ -34,7 +34,7 @@ public class MyMenuBar {
         openImage.setStyle("-fx-font-size:14;");
         openImage.setAccelerator(KeyCombination.keyCombination("Ctrl+o"));
         openImage.setOnAction(event -> {
-            boolean isOK=true;
+            boolean isOK =true;
             if(!tmpCanvas.getList().isEmpty()) {
                 Alert confirmOpen = new Alert(Alert.AlertType.CONFIRMATION,null,new ButtonType("取消", ButtonBar.ButtonData.NO),
                         new ButtonType("确定", ButtonBar.ButtonData.YES));
@@ -58,6 +58,7 @@ public class MyMenuBar {
                     try {
                         Image image = new Image(new FileInputStream(file));
                         tmpCanvas.setImage(image);
+                        MyStatus.mapName=file.getName();
                         file = null;
                     } catch (Exception ex) {}
                 }
@@ -132,9 +133,10 @@ public class MyMenuBar {
             } catch (Exception e){}
             tmpCanvas.netLabel.update();
         });
+        // 取消网络功能
         netMenu.getItems().addAll(connectNet,joinItem);
         // 添加进menu
-        myBar.getMenus().addAll(fileMenu,editMenu,netMenu);
+        myBar.getMenus().addAll(fileMenu,editMenu/*,netMenu*/);
     }
     public MenuBar getMenu(){
         return myBar;

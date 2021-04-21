@@ -24,7 +24,6 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executors;
 
 //这是一个画板，把许多画布合成而来，同时，包括一个状态栏。
 //增加新功能，把每一个绘画动作储存起来
@@ -51,7 +50,7 @@ public class MyCanvas {
     Socket mySocket;
     private FileInputStream myFIS = null;
     private OutputStream os = null;
-    MyNetBar myNetBar;
+    MyEditBar myEditBar;
     //状态栏相关
     private Label curPos;
     private Label info;
@@ -60,6 +59,7 @@ public class MyCanvas {
     //同步工具
     NameList tools;
     UpdateImage myUpdateThread;
+
     class NetLabel extends Label {
         NetLabel() {
             this.setFont(Font.font("Microsoft YaHei", 16));
@@ -76,8 +76,8 @@ public class MyCanvas {
     //重做相关
     private Canvas newCanvas;
 
-    public MyCanvas(MyNetBar netBar) {
-        myNetBar = netBar;
+    public MyCanvas(MyEditBar editBar) {
+        myEditBar = editBar;
         //名单工具
         tools = new NameList();
         //网络声明
@@ -104,10 +104,10 @@ public class MyCanvas {
         vbox.setAlignment(Pos.CENTER);
         vbox.setPadding(new Insets(10, 20, 0, 0));
         vbox.getChildren().add(content);
-        drawingCanvas = new Canvas(800, 800);
+        drawingCanvas = new Canvas(850, 850);
         gc = drawingCanvas.getGraphicsContext2D();
         gc.setFill(Color.WHITE);
-        gc.fillRect(0, 0, 800, 800);
+        gc.fillRect(0, 0, 850, 850);
         gc.restore();
 
         content.getChildren().add(drawingCanvas);
@@ -117,7 +117,7 @@ public class MyCanvas {
         listCanvas = new ArrayList<>();
         // 加载默认图片
         try {
-            File asImageFile = new File("./我的作品/AutoSave.png");
+            File asImageFile = new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
             if (asImageFile.exists()) {
                 Image image = new Image(new FileInputStream(asImageFile));
                 setImage(image);
@@ -125,11 +125,10 @@ public class MyCanvas {
         } catch (IOException e) {
         }
         //以下是绘图主函数
-        tools.addPeople(MyStatus.nickName,MyStatus.id);
+        tools.addPeople(MyStatus.nickName, MyStatus.id);
         //当鼠标移动
         drawingCanvas.setOnMouseMoved(event -> {
             update();
-            myNetBar.update();
             if (numPoints <= 9) {
                 polyLabel.setText("多边形状态: 边数:0" + numPoints + "/20  " + (MyStatus.drawPoly ? "下次按键绘图" : "下次按键记录"));
             } else {
@@ -156,6 +155,8 @@ public class MyCanvas {
             c.setOnMouseMoved(drawingCanvas.getOnMouseMoved());
             c.setOnMouseExited(drawingCanvas.getOnMouseExited());
             if (MyStatus.toolName.equals("OVAL") || MyStatus.toolName.equals("RECTANGLEZ") || MyStatus.toolName.equals("RECTANGLEY")) {
+                // 储存一个点
+                MyStatus.addPoint((int) x1, (int) y1);
                 if (!MyStatus.fill) {
                     gc.setLineWidth(MyStatus.lineSize);
                     setStatus(c, MyStatus.color, false);
@@ -163,7 +164,7 @@ public class MyCanvas {
                     gc.setLineWidth(MyStatus.lineSize);
                     setStatus(c, MyStatus.color, true);
                 }
-            } else if (MyStatus.toolName.equals("BARREL")) {
+            } else if (MyStatus.toolName.equals("PIN")) {
                 setStatus(c, MyStatus.color, true);
             } else {
                 gc.setLineWidth(MyStatus.lineSize);
@@ -173,13 +174,23 @@ public class MyCanvas {
             if (MyStatus.toolName.equals("RUBBER")) {
                 gc.setStroke(Color.WHITE);
             }
-
+            if (MyStatus.toolName.equals("LINE")){
+                // 储存一个点
+                MyStatus.addPoint((int) x1, (int) y1);
+            }
             //这是个特例哈，因为可以直接绘出文字
+            //钉子也是个特例
             if (MyStatus.toolName.equals("TEXT")) {
+                // 储存一个点
+                MyStatus.addPoint((int) x1, (int) y1);
                 gc.setLineWidth(1);
                 gc.setFont(Font.font(MyStatus.fontFamily, MyStatus.fontSize));
                 gc.setStroke(MyStatus.color);
                 gc.strokeText(MyStatus.myText, event.getX(), event.getY());
+            } else if (MyStatus.toolName.equals("PIN")) {
+                // 储存一个点
+                MyStatus.addPoint((int) x1, (int) y1);
+                gc.fillOval(x1 - 2.5 * MyStatus.lineSize, y1 - 2.5 * MyStatus.lineSize, 5 * MyStatus.lineSize, 5 * MyStatus.lineSize);
             }
             if (MyStatus.toolName.equals("POLYGON")) {
                 if (MyStatus.drawPoly) {
@@ -195,6 +206,8 @@ public class MyCanvas {
                     numPoints = 0;
                     autoSave();
                 } else {
+                    // 储存一个点
+                    MyStatus.addPoint((int) x1, (int) y1);
                     x[numPoints] = x1;//放入一个点
                     y[numPoints] = y1;
                     numPoints++;
@@ -203,25 +216,40 @@ public class MyCanvas {
             listCanvas.add(c);
             content.getChildren().add(c);
         });
+        /*测试代码，（已经测试成功）
+        Canvas c1 = new Canvas(drawingCanvasWidth, drawingCanvasHeight);
+        GraphicsContext gc1 = c1.getGraphicsContext2D();
+        gc1.moveTo(0,0);
+        gc1.lineTo(800,800);
+        gc1.stroke();
+        listCanvas.add(c1);
+        content.getChildren().add(c1);
+        /**/
         //当鼠标拖动，触发事件
         drawingCanvas.setOnMouseDragged(event -> {
             //提供状态栏的
             curPos.setText(String.format("(%03d, %03d)", (int) event.getX(), (int) event.getY()));
             if ("PEN".equals(MyStatus.toolName) || MyStatus.toolName.equals("RUBBER")) {
                 gc.lineTo(event.getX(), event.getY());
+                MyStatus.addPoint((int) event.getX(), (int) event.getY());
                 gc.stroke();
             }
         });
         //当鼠标释放，绘出图形
         drawingCanvas.setOnMouseReleased(event -> {
-            //再次获取鼠标位置
+            // 再次获取鼠标位置
             x2 = event.getX();
             y2 = event.getY();
+            // 储存一个点，且仅有"LINE""OVAL""RECTANGLEZ""RECTANGLEY"这四个状态需要记录
+            if (MyStatus.toolName.equals("LINE") || MyStatus.toolName.equals("OVAL") || MyStatus.toolName.equals("RECTANGLEZ") || MyStatus.toolName.equals("RECTANGLEY")) {
+                MyStatus.addPoint((int) x2, (int) y2);
+            }
             double width = x2 - x1;
             double height = y2 - y1;
             if (MyStatus.toolName.equals("LINE")) {
                 gc.moveTo(x1, y1);
                 gc.lineTo(x2, y2);
+
                 gc.stroke();
             } else if (MyStatus.toolName.equals("OVAL")) {
                 if (width < 0) {
@@ -265,11 +293,11 @@ public class MyCanvas {
                 } else {
                     gc.strokeRoundRect(x1, y1, width, height, 30, 30);
                 }
-            } else if (MyStatus.toolName.equals("BARREL")) {
-                gc.fillRect(0, 0, drawingCanvasWidth, drawingCanvasHeight);
             }
             gc.stroke();
-            autoSave();
+            if (!MyStatus.toolName.equals("POLYGON")) {
+                autoSave();
+            }
         });
     }
 
@@ -292,9 +320,9 @@ public class MyCanvas {
     }
 
     void update() {
-        if(MyStatus.isUpdate) {
+        if (MyStatus.isUpdate) {
             try {
-                File asImageFile = new File("./我的作品/AutoSave.png");
+                File asImageFile = new File("./我的地图/" + MyStatus.mapName + "AutoSave.png");
                 if (asImageFile.exists()) {
                     Image image = new Image(new FileInputStream(asImageFile));
                     setImage(image);
@@ -310,7 +338,7 @@ public class MyCanvas {
     public void clear() {
         // 填一张白色
         gc.setFill(Color.WHITE);
-        gc.fillRect(0, 0, 800, 800);
+        gc.fillRect(0, 0, 850, 850);
         gc.restore();
         listCanvas.add(drawingCanvas);
         autoSave();
@@ -325,7 +353,8 @@ public class MyCanvas {
             gc.setStroke(color);
         }
     }
-    void disconnect(){
+
+    void disconnect() {
         try {
             // 发送关闭信息
             PrintStream myPS = new PrintStream(mySocket.getOutputStream());
@@ -341,8 +370,10 @@ public class MyCanvas {
             // 清空名字列表
             NameList.myNameList.clear();
             netLabel.update();
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
     }
+
     // 这个函数完成了撤销操作，这也是用链表的意义
     void undo() {
         if (!listCanvas.isEmpty()) {
@@ -388,7 +419,7 @@ public class MyCanvas {
     // 获取当前
     public RenderedImage getNewImage() {
         // 以下代码，旨在合成一个图层
-        Canvas oneCanvas = new Canvas(800, 800);
+        Canvas oneCanvas = new Canvas(850, 850);
         // 新建一个快照
         SnapshotParameters mySP = new SnapshotParameters();
         mySP.setFill(Color.TRANSPARENT);// 设一个透明背景，这是必定
@@ -398,9 +429,9 @@ public class MyCanvas {
             // 写入主图层
             oneCanvas.getGraphicsContext2D().drawImage(thisImage, 0, 0);
         }
-        WritableImage myWI = new WritableImage(800, 800);
+        WritableImage myWI = new WritableImage(850, 850);
         oneCanvas.snapshot(null, myWI);*/
-        WritableImage myWI = new WritableImage(800, 800);
+        WritableImage myWI = new WritableImage(850, 850);
         content.snapshot(null, myWI);
         return SwingFXUtils.fromFXImage(myWI, null);
     }
@@ -416,7 +447,7 @@ public class MyCanvas {
             myPS.println("join$" + MyStatus.id + "$" + name);
             myPS.flush();
 
-            tools.addPeople(MyStatus.nickName,MyStatus.id);
+            tools.addPeople(MyStatus.nickName, MyStatus.id);
             myUpdateThread = new UpdateImage(mySocket);
             myUpdateThread.start();
         } catch (Exception e) {
@@ -425,15 +456,19 @@ public class MyCanvas {
     }
 
     public void autoSave() {
-        File imageFile = new File("./我的作品/AutoSave.png");
+        File imageFile = new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
         try {
             ImageIO.write(getNewImage(), "PNG", imageFile);
-        } catch (IOException err) {
+            // 在逻辑上，地图每有一次更新就多加一行字
+            if (!MyStatus.points.isEmpty()) {
+                addLine();
+            }
+        } catch (IOException ignored) {
         }
         try {
             if (MyStatus.networkConnect) {
                 assert mySocket != null;
-                File newImage = new File("./我的作品/AutoSave.png");
+                File newImage = new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
                 FileInputStream fis = new FileInputStream(newImage);
                 byte[] buffer = new byte[4096 * 2];
                 PrintStream myPS = new PrintStream(mySocket.getOutputStream());
@@ -455,6 +490,41 @@ public class MyCanvas {
             System.err.println(e);
         }
     }
+
+    // 向本地文件中增加指定内容
+    public static void addContent(String filepath, String content) {
+        FileWriter fw = null;
+        try {
+            //如果文件存在，则追加内容；如果文件不存在，则创建文件
+            File f = new File(filepath);
+            fw = new FileWriter(f, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PrintWriter pw = new PrintWriter(fw);
+        pw.println(content);
+        pw.flush();
+        try {
+            fw.flush();
+            pw.close();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 向同名mec（MapErrorCorrect）文本文件中写入当前操作，直接写入点
+    public void addLine() {
+        // 将文本框内信息写入Status
+        MyStatus.infoText = myEditBar.infoArea.getText();
+        // points字符串的结构应被统一规制为(x1,x2,x3...)(y1,y2,y3...)
+        // 上一句话无效，考虑到初始化的方便，还是规制为(x,y)(x1,y1)形式，且这些操作完全由MyStatus完成
+        addContent(MyStatus.mapName + ".mec", MyStatus.status2Str() + "$点开始$" + MyStatus.points2Str() + "$点结束$" + "$备注开始$" + MyStatus.infoText + "$备注结束$");
+        // 储存之后就清空掉
+        MyStatus.points.clear();
+    }
+
+    // 如上所述，必须完成2个功能，一个是把x，y列表转换为points串结构，第二个是把points串结构还原为points列表
 }
 /*    public void sendMessage(double x1,double y1,double x2,double y2) {
         try {

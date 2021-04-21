@@ -103,7 +103,7 @@ public class SeverCanvas {
                         gc.setLineWidth(SeverStatus.lineSize);
                         setStatus(c, SeverStatus.color, true);
                     }
-                }else if(SeverStatus.toolName.equals("BARREL")){
+                }else if(SeverStatus.toolName.equals("PIN")){
                     setStatus(c, SeverStatus.color, true);
                 }else{
                     gc.setLineWidth(SeverStatus.lineSize);
@@ -201,7 +201,7 @@ public class SeverCanvas {
                     gc.fillRoundRect(x1, y1, width, height, 30, 30);
                 else
                     gc.strokeRoundRect(x1, y1, width, height, 30, 30);
-            } else if (SeverStatus.toolName.equals("BARREL")) {
+            } else if (SeverStatus.toolName.equals("PIN")) {
                 gc.fillRect(0,0,drawingCanvasWidth, drawingCanvasHeight);
             }
             gc.stroke();

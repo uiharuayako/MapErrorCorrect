@@ -18,8 +18,8 @@ public class MyButtons {
         buttonBox.setPrefColumns(2);
         buttonBox.setHgap(5);
         buttonBox.setVgap(5);
-        String[] buttons={"PEN","RUBBER","BARREL","TEXT","LINE","RECTANGLEY","RECTANGLEZ","POLYGON","OVAL"};
-        for(int i=0;i<9;i++){
+        String[] buttons={"PEN","RUBBER","PIN","TEXT","LINE","RECTANGLEY","RECTANGLEZ","POLYGON","OVAL"};
+        for(int i=0;i<buttons.length;i++){
             ToolButton tmpButton=new ToolButton(buttons[i]);
             buttonBox.getChildren().add(tmpButton);
         }

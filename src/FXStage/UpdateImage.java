@@ -5,7 +5,7 @@ import java.net.Socket;
 
 public class UpdateImage extends Thread {
     private Socket myS;
-    File file = new File("./我的作品/AutoSave.png");
+    File file = new File("./我的作品/"+MyStatus.mapName+"AutoSave.png");
     int file_size;// 文件大小
     FileOutputStream fos = null;
     InputStream is = null;

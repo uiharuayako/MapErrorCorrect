@@ -2,6 +2,9 @@ package Network;
 
 import javafx.scene.paint.Color;
 
+/**
+ * @author Ayako
+ */
 public class SeverStatus {
     static String toolName = "PEN";
     static double lineSize = 1;

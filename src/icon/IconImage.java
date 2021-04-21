@@ -9,7 +9,7 @@ public class IconImage {
     public static Image getImage(String name){
         if(name.equals("PEN")) return new Image("/icon/pen.png");
         if(name.equals("RUBBER")) return new Image("/icon/rubber.png");
-        if(name.equals("BARREL")) return new Image("/icon/barrel.png");
+        if(name.equals("PIN")) return new Image("/icon/pin.png");
         if(name.equals("TEXT")) return new Image("/icon/text.png");
         if(name.equals("LINE")) return new Image("/icon/line.png");
         if(name.equals("RECTANGLEY")) return new Image("/icon/rectangleY.png");
