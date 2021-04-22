@@ -4,58 +4,7 @@
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="完全完成，只差完善">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/AppMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/ColorButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/MyButtons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/MyCanvas$1mySP.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/MyCanvas$NetLabel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/MyCanvas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/MyMenuBar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/MyNetBar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/MyPalette.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/MyStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/NameList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/People.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/ToolButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/ToolsPane.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/FXStage/UpdateImage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/Network/Sever.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/Network/SeverApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/Network/SeverCanvas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/Network/SeverFX.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/Network/SeverStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/command.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/IconImage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/arc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/barrel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/line.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/oval.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/pen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/polygon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/rectangleY.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/rectangleZ.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/rubber.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/shapeCursor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/icon/text.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DrawOnline/main.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyButtons.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyButtons.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyPalette.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyPalette.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/ToolsPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/ToolsPane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/MyButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/MyPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyPalette.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/ToolsPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/ToolsPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/我的作品/我的地图AutoSave.png" beforeDir="false" afterPath="$PROJECT_DIR$/我的作品/我的地图AutoSave.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/我的作品/武汉大学地图.pngAutoSave.png" beforeDir="false" afterPath="$PROJECT_DIR$/我的作品/武汉大学地图.pngAutoSave.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/我的地图.mec" beforeDir="false" afterPath="$PROJECT_DIR$/我的地图.mec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/武汉大学地图.png.mec" beforeDir="false" afterPath="$PROJECT_DIR$/武汉大学地图.png.mec" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="完全完成，只差完善" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -413,7 +362,7 @@
       <workItem from="1618999593689" duration="9608000" />
       <workItem from="1619014426253" duration="12496000" />
       <workItem from="1619051169845" duration="3570000" />
-      <workItem from="1619063573793" duration="10793000" />
+      <workItem from="1619063573793" duration="11389000" />
     </task>
     <task id="LOCAL-00001" summary="未修改代码">
       <created>1618823278234</created>
