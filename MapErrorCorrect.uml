@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/code/MapErrorCorrect</OriginalElement>
+  <nodes>
+    <node x="10.262061403508824" y="-326.7850877192982">FXStage.MyMenuBar</node>
+    <node x="10.262061403508824" y="249.2149122807018">FXStage.MyEditBar</node>
+    <node x="711.9660087719301" y="-222.83333333333326">FXStage.InfoLine</node>
+    <node x="711.9660087719301" y="85.66118421052636">FXStage.MyPalette</node>
+    <node x="354.61403508771946" y="-14.933114035087328">FXStage.MyStatus</node>
+    <node x="708.9660087719301" y="471.4029605263157">FXStage.ToolButton</node>
+    <node x="711.9660087719301" y="-366.08059210526307">icon.IconImage</node>
+    <node x="711.9660087719301" y="-79.58607456140345">FXStage.MyPoint</node>
+    <node x="708.9660087719301" y="569.6502192982455">FXStage.ToolsPane</node>
+    <node x="708.9660087719301" y="350.155701754386">FXStage.ColorButton</node>
+    <node x="711.9660087719301" y="228.90844298245617">FXStage.MyButtons</node>
+    <node x="-269.3519736842105" y="84.90679824561425">AppMain</node>
+    <node x="10.262061403508824" y="438.2149122807018">FXStage.MyNotePad</node>
+    <node x="10.262061403508824" y="-181.7850877192982">FXStage.MyCanvas</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="分层" zoom="0.8321241585639492" showDependencies="false" x="1033.1202455073103" y="143.99514628556017" />
+  <SelectedNodes />
+  <Categories>
+    <Category>方法</Category>
+    <Category>构造函数</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

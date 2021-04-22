@@ -5,7 +5,7 @@ import javafx.scene.layout.VBox;
 
 public class ToolsPane {
     //整个工具栏的结构
-    private VBox toolsPane;
+    private final VBox toolsPane;
     //初始化
     public ToolsPane(){
         toolsPane = new VBox();

@@ -39,24 +39,24 @@ public class MyCanvas {
     private double[] y;
     private int numPoints;
     //画板相关
-    private Group content;
-    private VBox vbox;
-    private Canvas drawingCanvas;
+    private final Group content;
+    private final VBox vbox;
+    private final Canvas drawingCanvas;
     private GraphicsContext gc;
     public static int drawingCanvasWidth;
     public static int drawingCanvasHeight;
-    private List<Canvas> listCanvas;
+    private final List<Canvas> listCanvas;
     //网络相关
     Socket mySocket;
-    private FileInputStream myFIS = null;
+    private final FileInputStream myFIS = null;
     MyEditBar myEditBar;
     //状态栏相关
-    private Label curPos;
-    private Label info;
-    private Label polyLabel;
-    private Label infoLabel;
+    private final Label curPos;
+    private final Label info;
+    private final Label polyLabel;
+    private final Label infoLabel;
 
-    private HBox statusBar;
+    private final HBox statusBar;
     //重做相关
     private Canvas newCanvas;
 
@@ -561,6 +561,7 @@ public class MyCanvas {
         addContent(MyStatus.mapName + ".mec", MyStatus.status2Str() + "$点开始$" + MyStatus.points2Str() + "$点结束$" + "$备注开始$" + MyStatus.infoText + "$备注结束$");
         // 储存之后就清空掉
         MyStatus.points.clear();
+        myEditBar.loadInfo();
     }
 
     // 这个函数旨在把thisLine里的两种信息load进MyStatus里

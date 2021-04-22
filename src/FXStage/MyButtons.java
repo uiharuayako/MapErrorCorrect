@@ -10,7 +10,7 @@ import javafx.scene.text.Font;
 
 //设定按钮
 public class MyButtons {
-    private VBox toolsVBox;
+    private final VBox toolsVBox;
     MyButtons(){
         TilePane buttonBox = new TilePane();
         buttonBox.setAlignment(Pos.CENTER);
