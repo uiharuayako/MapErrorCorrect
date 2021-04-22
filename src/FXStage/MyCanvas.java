@@ -55,22 +55,10 @@ public class MyCanvas {
     private Label curPos;
     private Label info;
     private Label polyLabel;
-    NetLabel netLabel;
+    private Label infoLabel;
     //同步工具
     NameList tools;
     UpdateImage myUpdateThread;
-
-    class NetLabel extends Label {
-        NetLabel() {
-            this.setFont(Font.font("Microsoft YaHei", 16));
-            this.setAlignment(Pos.CENTER_LEFT);
-            update();
-        }
-
-        void update() {
-            this.setText("网络 " + (MyStatus.networkConnect ? "开启" : "关闭"));
-        }
-    }
 
     private HBox statusBar;
     //重做相关
@@ -89,7 +77,9 @@ public class MyCanvas {
         polyLabel = new Label("多边形状态栏");
         info = new Label("工具状态栏");
         curPos = new Label("欢迎使用画板");
-        netLabel = new NetLabel();
+        infoLabel = new Label("当前位置没有纠错图形");
+        infoLabel.setFont(Font.font("Microsoft YaHei", 16));
+        infoLabel.setAlignment(Pos.CENTER_LEFT);
         polyLabel.setFont(Font.font("Microsoft YaHei", 16));
         polyLabel.setAlignment(Pos.CENTER);
         info.setFont(Font.font("Microsoft YaHei", 16));
@@ -131,6 +121,17 @@ public class MyCanvas {
         drawingCanvas.setOnMouseMoved(event ->
         {
             update();
+            //检测当前鼠标附近是否有对象图像
+            infoLabel.setText("当前位置没有图形");
+            for (int i = 0; i < myEditBar.posOfPois.size(); i++) {
+                MyPoint searchPoi = myEditBar.posOfPois.get(i);
+                //鼠标x-25<searchPoi.x<鼠标x+25
+                //y也同理，反正在里面，不用for in也是为了获取行号
+                if (event.getX() - 25 <= searchPoi.getX() && searchPoi.getX() <= event.getX() + 25 && event.getY() - 25 <= searchPoi.getY() && searchPoi.getY() <= event.getY() + 25) {
+                    infoLabel.setText("备注：" + myEditBar.myInfo.get(i).infoStr);
+                    break;
+                }
+            }
             if (numPoints <= 9) {
                 polyLabel.setText("多边形状态: 边数:0" + numPoints + "/20  " + (MyStatus.drawPoly ? "下次按键绘图" : "下次按键记录"));
             } else {
@@ -218,15 +219,6 @@ public class MyCanvas {
             listCanvas.add(c);
             content.getChildren().add(c);
         });
-        /*测试代码，（已经测试成功）
-        Canvas c1 = new Canvas(drawingCanvasWidth, drawingCanvasHeight);
-        GraphicsContext gc1 = c1.getGraphicsContext2D();
-        gc1.moveTo(0,0);
-        gc1.lineTo(800,800);
-        gc1.stroke();
-        listCanvas.add(c1);
-        content.getChildren().add(c1);
-        /**/
         //当鼠标拖动，触发事件
         drawingCanvas.setOnMouseDragged(event ->
 
@@ -305,17 +297,21 @@ public class MyCanvas {
         });
         //以下为最艰难的部分：拿文件内容绘图，一次创建canvas过程中只调用一次这个函数
         //之前就想做这个功能，技术原因一直没做
-        File file=new File(MyStatus.mapName+".mec");
+        File file = new File(MyStatus.mapName + ".mec");
         if (file.exists()) {
             myEditBar.loadInfo();
         }
+        drawFromFile();
+    }
+
+    public void drawFromFile() {
         for (InfoLine myLine : myEditBar.myInfo) {
             // 遍历myInfo
             loadLine(myLine);
             // 开始模拟一个正常画图
             x1 = MyStatus.points.get(0).getX();
             y1 = MyStatus.points.get(0).getY();
-            if(MyStatus.points.size()>1) {
+            if (MyStatus.points.size() > 1) {
                 x2 = MyStatus.points.get(1).getX();
                 y2 = MyStatus.points.get(1).getY();
             }
@@ -420,8 +416,8 @@ public class MyCanvas {
             }
             // 笔画情况
             if ("PEN".equals(MyStatus.toolName) || "RUBBER".equals(MyStatus.toolName)) {
-                for(int i=0;i<MyStatus.points.size();i++){
-                    MyPoint poi=MyStatus.points.get(i);
+                for (int i = 0; i < MyStatus.points.size(); i++) {
+                    MyPoint poi = MyStatus.points.get(i);
                     gc.lineTo(poi.getX(), poi.getY());
                 }
             }
@@ -437,13 +433,13 @@ public class MyCanvas {
             mySocket = new Socket("127.0.0.1", 4004);
             os = mySocket.getOutputStream();
             joinNet(MyStatus.nickName);
-            netLabel.update();
-        } catch (IOException e) {
-            netLabel.update();
+        } catch (IOException ignored) {
         }
     }
 
     public void setImage(Image newImage) {
+        gc.setFill(Color.WHITE);
+        gc.fillRect(0, 0, 850, 850);
         gc.drawImage(newImage, 0, 0);
         gc.stroke();
         listCanvas.add(drawingCanvas);
@@ -458,7 +454,7 @@ public class MyCanvas {
                     Image image = new Image(new FileInputStream(asImageFile));
                     setImage(image);
                 }
-            } catch (IOException e) {
+            } catch (IOException ignored) {
             }
 
             MyStatus.isUpdate = false;
@@ -500,8 +496,7 @@ public class MyCanvas {
             mySocket.close();
             // 清空名字列表
             NameList.myNameList.clear();
-            netLabel.update();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
@@ -540,7 +535,7 @@ public class MyCanvas {
                 setOrientation(Orientation.VERTICAL);
             }
         }
-        statusBar.getChildren().addAll(netLabel, new mySP(), info, new mySP(), polyLabel, new mySP(), curPos);
+        statusBar.getChildren().addAll(infoLabel,new mySP(), info, new mySP(), polyLabel, new mySP(), curPos);
         statusBar.setAlignment(Pos.CENTER);
         statusBar.setSpacing(10);
         statusBar.setPadding(new Insets(5, 30, 5, 100));
@@ -581,8 +576,7 @@ public class MyCanvas {
             tools.addPeople(MyStatus.nickName, MyStatus.id);
             myUpdateThread = new UpdateImage(mySocket);
             myUpdateThread.start();
-        } catch (Exception e) {
-            netLabel.update();
+        } catch (Exception ignored) {
         }
     }
 

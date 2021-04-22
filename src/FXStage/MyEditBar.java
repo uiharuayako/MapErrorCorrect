@@ -37,6 +37,7 @@ public class MyEditBar {
     int searchNum = 0;
     InfoLine searchLine;
     ArrayList<InfoLine> myInfo = new ArrayList<>();
+    ArrayList<MyPoint> posOfPois = new ArrayList<>();
 
     public MyEditBar() {
         // 整体
@@ -144,6 +145,9 @@ public class MyEditBar {
         // 初始禁止更改
         saveButton.setDisable(true);
         loadButton = new Button("导入文件");
+        loadButton.setOnAction(event -> {
+            loadInfo();
+        });
         fileButtons.getChildren().addAll(saveButton, loadButton);
         fileButtons.setAlignment(Pos.CENTER);
         fileButtons.setSpacing(80);
@@ -164,12 +168,14 @@ public class MyEditBar {
     // 已经用catch环绕
     void loadInfo() {
         myInfo.clear();
+        posOfPois.clear();
         try {
             File file = new File(MyStatus.mapName + ".mec");
             BufferedReader br = new BufferedReader(new FileReader(file));
             String thisLine;
             while ((thisLine = br.readLine()) != null) {
                 InfoLine changedLine = new InfoLine(thisLine);
+                posOfPois.add(changedLine.position);
                 myInfo.add(changedLine);
             }
         } catch (Exception e) {

@@ -63,6 +63,8 @@ public class MyMenuBar {
                     } catch (Exception ex) {}
                 }
             }
+            tmpCanvas.myEditBar.loadInfo();
+            tmpCanvas.drawFromFile();
         });
         MenuItem saveImage=new MenuItem("保存");
         saveImage.setStyle("-fx-font-size:14;");
@@ -78,7 +80,7 @@ public class MyMenuBar {
                     ImageIO.write(tmpCanvas.getNewImage(), "PNG", file);
                     file = null;
                 }
-            } catch (IOException err){}
+            } catch (IOException ignored){}
         });
         fileMenu.getItems().addAll(newFile,openImage,saveImage);
         // 编辑选单
@@ -131,7 +133,6 @@ public class MyMenuBar {
                     MyStatus.networkConnect = true;
                 }
             } catch (Exception e){}
-            tmpCanvas.netLabel.update();
         });
         // 取消网络功能
         netMenu.getItems().addAll(connectNet,joinItem);
