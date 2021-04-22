@@ -10,7 +10,6 @@ import java.util.Optional;
 
 // 这是自定义的按钮类，这个按钮只有一个作用---改变信息(当然，文字输入除外
 public class ToolButton extends Button {
-    NameList tools = new NameList();
     ToolButton(String name){
         this.setGraphic(IconImage.getImageView(IconImage.getImage(name)));//设定按钮外观
         if(name.equals("TEXT")){
@@ -24,20 +23,17 @@ public class ToolButton extends Button {
                 if (result.isPresent()){
                     MyStatus.myText=result.get();
                 }
-                tools.toolChange(MyStatus.id,name);
                 MyStatus.toolName=name;//别忘了设定当前工具
             });
         }
         else if(name.equals("POLYGON")){
             this.setOnAction(event -> {
-                tools.toolChange(MyStatus.id,name);
                 MyStatus.toolName=name;//别忘了设定当前工具
                 MyStatus.drawPoly=!MyStatus.drawPoly;
             });
         }
         else{
             this.setOnAction(event -> {
-            tools.toolChange(MyStatus.id,name);
             MyStatus.toolName=name;//设定当前工具
         });
         }

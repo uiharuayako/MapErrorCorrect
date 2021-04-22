@@ -55,8 +55,6 @@ public class MyCanvas {
     private Label info;
     private Label polyLabel;
     private Label infoLabel;
-    //同步工具
-    NameList tools;
 
     private HBox statusBar;
     //重做相关
@@ -64,8 +62,6 @@ public class MyCanvas {
 
     public MyCanvas(MyEditBar editBar) {
         myEditBar = editBar;
-        //名单工具
-        tools = new NameList();
         //网络声明
         mySocket = null;
         newCanvas = null;
@@ -113,7 +109,6 @@ public class MyCanvas {
         } catch (IOException e) {
         }
         //以下是绘图主函数
-        tools.addPeople(MyStatus.nickName, MyStatus.id);
         //当鼠标移动
         drawingCanvas.setOnMouseMoved(event ->
         {
