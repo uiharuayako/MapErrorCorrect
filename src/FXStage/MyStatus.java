@@ -3,6 +3,7 @@ package FXStage;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.scene.paint.Color;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class MyStatus {
     public final static String id = "" + System.currentTimeMillis();
     // 设置备注信息文本
     public static String infoText="请输入备注";
+    public static File originImg=new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
     public static void setFontFamily(String font) {
         MyStatus.fontFamily = font;
     }

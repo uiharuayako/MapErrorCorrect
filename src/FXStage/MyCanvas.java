@@ -49,7 +49,6 @@ public class MyCanvas {
     //网络相关
     Socket mySocket;
     private FileInputStream myFIS = null;
-    private OutputStream os = null;
     MyEditBar myEditBar;
     //状态栏相关
     private Label curPos;
@@ -58,7 +57,6 @@ public class MyCanvas {
     private Label infoLabel;
     //同步工具
     NameList tools;
-    UpdateImage myUpdateThread;
 
     private HBox statusBar;
     //重做相关
@@ -76,7 +74,7 @@ public class MyCanvas {
         statusBar = new HBox();
         polyLabel = new Label("多边形状态栏");
         info = new Label("工具状态栏");
-        curPos = new Label("欢迎使用画板");
+        curPos = new Label("欢迎使用");
         infoLabel = new Label("当前位置没有纠错图形");
         infoLabel.setFont(Font.font("Microsoft YaHei", 16));
         infoLabel.setAlignment(Pos.CENTER_LEFT);
@@ -116,7 +114,6 @@ public class MyCanvas {
         }
         //以下是绘图主函数
         tools.addPeople(MyStatus.nickName, MyStatus.id);
-        System.out.println("fin");
         //当鼠标移动
         drawingCanvas.setOnMouseMoved(event ->
         {
@@ -428,15 +425,6 @@ public class MyCanvas {
         }
     }
 
-    public void connectNet() {
-        try {
-            mySocket = new Socket("127.0.0.1", 4004);
-            os = mySocket.getOutputStream();
-            joinNet(MyStatus.nickName);
-        } catch (IOException ignored) {
-        }
-    }
-
     public void setImage(Image newImage) {
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, 850, 850);
@@ -481,25 +469,6 @@ public class MyCanvas {
         }
     }
 
-    void disconnect() {
-        try {
-            // 发送关闭信息
-            PrintStream myPS = new PrintStream(mySocket.getOutputStream());
-            // 命令格式：sync$id$文件长度$当前工具
-            //         join$id$你的昵称
-            //         stop$id
-            myPS.println("stop$" + MyStatus.id);
-            myPS.flush();
-            // 停止更新进程
-            myUpdateThread.exitThread();
-            // 关闭连接
-            mySocket.close();
-            // 清空名字列表
-            NameList.myNameList.clear();
-        } catch (Exception ignored) {
-        }
-    }
-
     // 这个函数完成了撤销操作，这也是用链表的意义
     void undo() {
         if (!listCanvas.isEmpty()) {
@@ -535,7 +504,7 @@ public class MyCanvas {
                 setOrientation(Orientation.VERTICAL);
             }
         }
-        statusBar.getChildren().addAll(infoLabel,new mySP(), info, new mySP(), polyLabel, new mySP(), curPos);
+        statusBar.getChildren().addAll(infoLabel, new mySP(), info, new mySP(), polyLabel, new mySP(), curPos);
         statusBar.setAlignment(Pos.CENTER);
         statusBar.setSpacing(10);
         statusBar.setPadding(new Insets(5, 30, 5, 100));
@@ -548,36 +517,10 @@ public class MyCanvas {
         Canvas oneCanvas = new Canvas(850, 850);
         // 新建一个快照
         SnapshotParameters mySP = new SnapshotParameters();
-        mySP.setFill(Color.TRANSPARENT);// 设一个透明背景，这是必定
-/*        for (Canvas thisCanvas : listCanvas) {
-            // 这个在其他地方感觉没啥用的功能难道是专门为了画板设计的吗...
-            WritableImage thisImage = thisCanvas.snapshot(mySP, null);
-            // 写入主图层
-            oneCanvas.getGraphicsContext2D().drawImage(thisImage, 0, 0);
-        }
-        WritableImage myWI = new WritableImage(850, 850);
-        oneCanvas.snapshot(null, myWI);*/
+        mySP.setFill(Color.TRANSPARENT);
         WritableImage myWI = new WritableImage(850, 850);
         content.snapshot(null, myWI);
         return SwingFXUtils.fromFXImage(myWI, null);
-    }
-
-    public void joinNet(String name) {
-
-        try {
-            assert mySocket != null;
-            PrintStream myPS = new PrintStream(mySocket.getOutputStream());
-            // 命令格式：sync$id$文件长度$当前工具
-            //         join$id$你的昵称
-            //         stop$id
-            myPS.println("join$" + MyStatus.id + "$" + name);
-            myPS.flush();
-
-            tools.addPeople(MyStatus.nickName, MyStatus.id);
-            myUpdateThread = new UpdateImage(mySocket);
-            myUpdateThread.start();
-        } catch (Exception ignored) {
-        }
     }
 
     public void autoSave() {
@@ -589,30 +532,6 @@ public class MyCanvas {
                 addLine();
             }
         } catch (IOException ignored) {
-        }
-        try {
-            if (MyStatus.networkConnect) {
-                assert mySocket != null;
-                File newImage = new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
-                FileInputStream fis = new FileInputStream(newImage);
-                byte[] buffer = new byte[4096 * 2];
-                PrintStream myPS = new PrintStream(mySocket.getOutputStream());
-                // 命令格式：sync$id$文件长度$当前工具
-                //         join$id$你的昵称
-                //         stop$id
-                myPS.println("sync$" + MyStatus.id + "$" + fis.available() + "$" + MyStatus.toolName);
-                myPS.flush();
-                Thread.sleep(100);
-                OutputStream os = mySocket.getOutputStream();
-                int size = 0;
-                while ((size = fis.read(buffer)) != -1) {
-                    os.write(buffer, 0, size);
-                    os.flush();
-                }
-                Thread.sleep(20);
-            }
-        } catch (Exception e) {
-            System.err.println(e);
         }
     }
 
@@ -656,16 +575,3 @@ public class MyCanvas {
     }
     // 如上所述，必须完成2个功能，一个是把x，y列表转换为points串结构，第二个是把points串结构还原为points
 }
-/*    public void sendMessage(double x1,double y1,double x2,double y2) {
-        try {
-            DataOutputStream out = new DataOutputStream(mySocket.getOutputStream());
-            out.writeUTF("sync$"+MyStatus.id+"$"+MyStatus.status2Str()+"$"+x1+"$"+y1+"$"+x2+"$"+y2);
-            out.
-        } catch(IOException e){}
-    }
-    public void sendMessage(double x1,double y1) {
-        try {
-            DataOutputStream out = new DataOutputStream(mySocket.getOutputStream());
-            out.writeUTF("sync$"+MyStatus.id+"$"+MyStatus.status2Str()+"$"+x1+"$"+y1+"$"+0+"$"+0);
-        } catch(IOException e){}
-    }*/

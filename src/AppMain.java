@@ -35,7 +35,7 @@ public class AppMain extends Application {
         bp.setRight(myEditBar.getRoot());
         //以下是必要的附加代码
         primaryStage.setScene(new Scene(bp));
-        primaryStage.setTitle("联网画板");
+        primaryStage.setTitle("地图错误改正工具 beta 0.1.0 -by Uiharu");
         primaryStage.show();
 
     }
