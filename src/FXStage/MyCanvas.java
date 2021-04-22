@@ -437,7 +437,7 @@ public class MyCanvas {
     void update() {
         if (MyStatus.isUpdate) {
             try {
-                File asImageFile = new File("./我的地图/" + MyStatus.mapName + "AutoSave.png");
+                File asImageFile = new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
                 if (asImageFile.exists()) {
                     Image image = new Image(new FileInputStream(asImageFile));
                     setImage(image);

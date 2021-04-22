@@ -17,7 +17,7 @@ public class AppMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         //以下是有关目录的创建
-        File pics = new File("./我的地图");
+        File pics = new File("./我的作品");
         if(!pics.exists()) {
             pics.mkdir();
         }
