@@ -24,20 +24,17 @@ public class ToolButton extends Button {
                 if (result.isPresent()){
                     MyStatus.myText=result.get();
                 }
-                tools.toolChange(MyStatus.id,name);
                 MyStatus.toolName=name;//别忘了设定当前工具
             });
         }
         else if(name.equals("POLYGON")){
             this.setOnAction(event -> {
-                tools.toolChange(MyStatus.id,name);
                 MyStatus.toolName=name;//别忘了设定当前工具
                 MyStatus.drawPoly=!MyStatus.drawPoly;
             });
         }
         else{
             this.setOnAction(event -> {
-            tools.toolChange(MyStatus.id,name);
             MyStatus.toolName=name;//设定当前工具
         });
         }

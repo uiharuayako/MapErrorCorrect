@@ -1,5 +1,6 @@
 package FXStage;
 
+import icon.IconImage;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
@@ -120,6 +121,41 @@ public class MyMenuBar {
             redrawMapByFile();
         });
         docMenu.getItems().addAll(docEdit, redrawFromDoc);
+        // 网络选单
+        Menu netMenu=new Menu();
+        netMenu.setText("网络");
+        netMenu.setStyle("-fx-font-size:16;");
+        MenuItem joinItem = new MenuItem("修改昵称");
+        joinItem.setOnAction(event -> {
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setGraphic(IconImage.getImageView(IconImage.getImage("ICON")));
+            dialog.setTitle("昵称输入框");
+            dialog.setContentText("请输入（允许重名）：");
+            dialog.setHeaderText("输入希望使用的昵称");
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()){
+                MyStatus.nickName = result.get();
+            }
+        });
+        MenuItem connectNet = new MenuItem("与网络连接");
+        connectNet.setStyle("-fx-font-size:14;");
+        connectNet.setOnAction(event -> {
+            try {
+                if (MyStatus.networkConnect) {
+                    connectNet.setText("与网络连接");
+                    tmpCanvas.disconnect();
+                    joinItem.setDisable(false);
+                    MyStatus.networkConnect = false;
+                } else {
+                    connectNet.setText("与网络断开");
+                    tmpCanvas.connectNet();
+                    joinItem.setDisable(true);
+                    MyStatus.networkConnect = true;
+                }
+            } catch (Exception e){}
+            tmpCanvas.netLabel.update();
+        });
+        netMenu.getItems().addAll(connectNet,joinItem);
         // 添加进menu
         myBar.getMenus().addAll(fileMenu, editMenu, docMenu);
     }

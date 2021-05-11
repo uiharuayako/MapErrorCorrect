@@ -5,7 +5,7 @@ import java.net.Socket;
 
 public class UpdateImage extends Thread {
     private Socket myS;
-    File file = new File("./我的作品/"+MyStatus.mapName+"AutoSave.png");
+    File file = new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
     int file_size;// 文件大小
     FileOutputStream fos = null;
     InputStream is = null;
@@ -15,15 +15,19 @@ public class UpdateImage extends Thread {
     String ID;
     String name;
     // 名单相关
-    NameList tools=new NameList();// 这个用于维护myNamelist这个表
+    NameList tools = new NameList();// 这个用于维护myNamelist这个表
+
     UpdateImage(Socket s) {
         myS = s;
     }
+
     // 退出相关
     boolean exit = false;
-    public void exitThread(){
+
+    public void exitThread() {
         exit = true;
     }
+
     @Override
     public void run() {
         while (!exit) {
@@ -48,7 +52,7 @@ public class UpdateImage extends Thread {
             if (protocol.equals("join")) {
                 name = comm.substring(index + 1);// 获取姓名
                 System.out.println("get name");
-                tools.addPeople(name,ID);
+                tools.addPeople(name, ID);
             }
             if (protocol.equals("stop")) {
                 tools.deletePeople(ID);// 删掉
@@ -61,8 +65,7 @@ public class UpdateImage extends Thread {
                     index = comm.indexOf("$");
                     String filesize = comm.substring(0, index).trim();
                     String toolname = comm.substring(index + 1);
-                    System.out.println("得到工具信息"+toolname);
-                    tools.toolChange(ID,toolname);
+                    System.out.println("得到工具信息" + toolname);
                     // 输出流
                     fos = new FileOutputStream(file);
                     file_size = Integer.parseInt(filesize);

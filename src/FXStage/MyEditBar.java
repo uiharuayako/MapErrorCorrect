@@ -13,6 +13,9 @@ import javafx.scene.text.Font;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * @author Ayako
+ */
 public class MyEditBar {
     VBox root;
     TextArea infoArea;

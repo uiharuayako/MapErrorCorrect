@@ -20,15 +20,7 @@ public class NameList {
         // 不存在这个人，添加
         myNameList.add(new People(n,i));
     }
-    void toolChange(String id,String tool){
-        for(People thisPeople:myNameList){
-            // 改变工具
-            if(thisPeople.getID().equals(id)) {
-                thisPeople.setToolName(tool);
-                return;
-            }
-        }
-    }
+
     void deletePeople(String id){
         myNameList.removeIf(thisPeople -> thisPeople.ID.equals(id));
     }
