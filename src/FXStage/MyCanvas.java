@@ -624,7 +624,9 @@ public class MyCanvas {
             e.printStackTrace();
         }
         // 每次增加内容，写数据库
-        MyPicProcess.savePic();
+        MyDBProcess.savePic();
+        // 每次写数据库，增加日志
+        MyDBProcess.addLog(content);
     }
 
     // 向同名mec（MapErrorCorrect）文本文件中写入当前操作，直接写入点

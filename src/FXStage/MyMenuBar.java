@@ -201,6 +201,7 @@ public class MyMenuBar {
                                 MyStatus.rightAccount = true;
                                 MyStatus.nickName = nameTF.getText();
                                 loginInfo.setHeaderText("登陆成功哒！当前用户：" + MyStatus.nickName);
+                                MyDBProcess.addLog("用户"+MyStatus.nickName+"登录成功");
                                 loginStage.close();
                             }
                         }
@@ -272,8 +273,6 @@ public class MyMenuBar {
                 }
             });
             confB.setOnAction(event1 -> {
-                // 改名
-                MyStatus.nickName = nameTF.getText();
                 PreparedStatement stmt = null;
                 try {
                     // 检测重名
@@ -290,6 +289,10 @@ public class MyMenuBar {
                         regInfo.show();
                     }
                     if (!isRepreted) {
+                        // 改名
+                        MyStatus.nickName = nameTF.getText();
+                        // 成功登陆状态
+                        MyStatus.rightAccount=true;
                         stmt = MyStatus.myCon.prepareStatement("insert into user(name,pwMD5,id) values(?,?,?)");
                         stmt.setString(1, MyStatus.nickName);
                         stmt.setString(2, MD5Utils.toMD5(cfpwPF.getText()));
@@ -297,6 +300,7 @@ public class MyMenuBar {
                         stmt.executeUpdate();
                         stmt.clearParameters();
                         regInfo.setHeaderText("注册成功！");
+                        MyDBProcess.addLog("用户"+MyStatus.nickName+"注册成功");
                         regStage.close();
                         regInfo.show();
                     }

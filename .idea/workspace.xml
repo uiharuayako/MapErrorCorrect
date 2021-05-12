@@ -8,23 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="w">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyEditBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyEditBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyMenuBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyMenuBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/MyEditBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyEditBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/MyMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyMenuBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/MyStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/SavePic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyPicProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/我的作品/44.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/我的地图.mec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FXStage/MyPicProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyDBProcess.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,8 +201,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyNotePad" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FXStage.MyNotePad" />
+    <configuration name="MyDBProcess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FXStage.MyDBProcess" />
       <module name="MapErrorCorrect" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -226,8 +215,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyPicProcess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FXStage.MyPicProcess" />
+    <configuration name="MyNotePad" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FXStage.MyNotePad" />
       <module name="MapErrorCorrect" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -322,13 +311,13 @@
       <item itemvalue="应用程序.SeverFX" />
       <item itemvalue="应用程序.test" />
       <item itemvalue="应用程序.MyNotePad" />
-      <item itemvalue="应用程序.MyPicProcess" />
+      <item itemvalue="应用程序.MyDBProcess" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.AppMain" />
         <item itemvalue="应用程序.test" />
-        <item itemvalue="应用程序.MyPicProcess" />
+        <item itemvalue="应用程序.MyDBProcess" />
         <item itemvalue="应用程序.MyNotePad" />
       </list>
     </recent_temporary>
@@ -404,7 +393,7 @@
       <workItem from="1620855793349" duration="383000" />
       <workItem from="1620856720397" duration="366000" />
       <workItem from="1620857100230" duration="184000" />
-      <workItem from="1620857320162" duration="2310000" />
+      <workItem from="1620857320162" duration="3517000" />
     </task>
     <task id="LOCAL-00001" summary="未修改代码">
       <created>1618823278234</created>

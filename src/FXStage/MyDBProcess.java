@@ -3,8 +3,9 @@ package FXStage;
 import java.io.*;
 import java.sql.*;
 
-// 这是一个用来处理图片和文档的类
-public class MyPicProcess {
+// 这是一个用来操作数据库的类
+public class MyDBProcess {
+    // 保存当前图片信息
     public static void savePic() {
         // 所有操作必须正确登录账户才能进行
         if (MyStatus.rightAccount) {
@@ -41,7 +42,7 @@ public class MyPicProcess {
 
         }
     }
-
+    // 获取当前mapname的图片
     public static void getPicNow() {
         // 所有操作必须正确登录账户才能进行
         if (MyStatus.rightAccount) {
@@ -59,7 +60,20 @@ public class MyPicProcess {
             }
         }
     }
-
+    // 添加记录
+    public static void addLog(String info){
+        // 当然也要检查正确的账户
+        if(MyStatus.rightAccount){
+            try{
+                PreparedStatement ps=MyStatus.myCon.prepareStatement("insert into logs(userName,time,infoLine) values(?,?,?)");
+                ps.setString(1,MyStatus.nickName);
+                ps.setTimestamp(2,MyStatus.getNowTime());
+                ps.setString(3,info);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
     public static String mec2String() {
         StringBuilder buffer = new StringBuilder();
         BufferedReader bf = null;
