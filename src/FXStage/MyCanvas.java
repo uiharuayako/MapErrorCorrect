@@ -123,7 +123,7 @@ public class MyCanvas {
         listCanvas = new ArrayList<>();
         // 加载默认图片
         try {
-            File asImageFile = new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
+            File asImageFile = new File("./我的作品/" + MyStatus.mapName + ".png");
             if (asImageFile.exists()) {
                 Image image = new Image(new FileInputStream(asImageFile));
                 setImage(image);
@@ -312,7 +312,7 @@ public class MyCanvas {
         });
         //以下为最艰难的部分：拿文件内容绘图，一次创建canvas过程中只调用一次这个函数
         //之前就想做这个功能，技术原因一直没做
-        File file = new File(MyStatus.mapName + ".mec");
+        File file = new File(MyStatus.getMecPath());
         if (file.exists()) {
             myEditBar.loadInfo();
         }
@@ -623,6 +623,8 @@ public class MyCanvas {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // 每次增加内容，写数据库
+        MyPicProcess.savePic();
     }
 
     // 向同名mec（MapErrorCorrect）文本文件中写入当前操作，直接写入点
@@ -631,9 +633,11 @@ public class MyCanvas {
         MyStatus.infoText = myEditBar.infoArea.getText();
         // points字符串的结构应被统一规制为(x1,x2,x3...)(y1,y2,y3...)
         // 上一句话无效，考虑到初始化的方便，还是规制为(x,y)(x1,y1)形式，且这些操作完全由MyStatus完成
-        addContent(MyStatus.mapName + ".mec", MyStatus.status2Str() + "$点开始$" + MyStatus.points2Str() + "$点结束$" + "$备注开始$" + MyStatus.infoText + "$备注结束$");
+        addContent(MyStatus.getMecPath(), MyStatus.status2Str() + "$点开始$" + MyStatus.points2Str() + "$点结束$" + "$备注开始$" + MyStatus.infoText + "$备注结束$");
         // 储存之后就清空掉
         MyStatus.points.clear();
+        // 逻辑上，地图每更新一次必须update，就是重新load
+        myEditBar.loadInfo();
     }
 
     // 这个函数旨在把thisLine里的两种信息load进MyStatus里

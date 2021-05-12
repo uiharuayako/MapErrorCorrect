@@ -131,7 +131,7 @@ public class MyEditBar {
             searchLine.infoStr = infoOutArea.getText();
             // 因为不知道写入了几次，因此将内存中的info的整体list写入文件
             try {
-                File file = new File(MyStatus.mapName + ".mec");
+                File file = new File(MyStatus.getMecPath());
                 FileWriter fileWriter = new FileWriter(file);
                 PrintWriter pw = new PrintWriter(fileWriter);
                 for (InfoLine thisLine : myInfo) {
@@ -173,7 +173,7 @@ public class MyEditBar {
         myInfo.clear();
         posOfPois.clear();
         try {
-            File file = new File(MyStatus.mapName + ".mec");
+            File file = new File(MyStatus.getMecPath());
             BufferedReader br = new BufferedReader(new FileReader(file));
             String thisLine;
             while ((thisLine = br.readLine()) != null) {

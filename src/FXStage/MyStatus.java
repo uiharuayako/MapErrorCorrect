@@ -13,7 +13,7 @@ import java.util.List;
 
 // 记录当前窗口的状态，使用的工具情况，线的粗细等，是一个纯静态类
 public class MyStatus {
-    public static String mapName = "我的地图";
+    public static String mapName = "空白底图";
     public static String toolName = "PEN";
     public static double lineSize = 1;
     public static double fontSize = 12;
@@ -39,7 +39,7 @@ public class MyStatus {
     public final static Timestamp id = new Timestamp(System.currentTimeMillis());
     // 设置备注信息文本
     public static String infoText = "请输入备注";
-    public static File originImg = new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
+    public static File originImg = new File("./我的作品/" + MyStatus.mapName + ".png");
 
     public static void setFontFamily(String font) {
         MyStatus.fontFamily = font;
@@ -117,4 +117,18 @@ public class MyStatus {
         points.add(new MyPoint(x, y));
     }
 
+    // 获取当前的时间戳
+    public static Timestamp getNowTime() {
+        return new Timestamp(System.currentTimeMillis());
+    }
+
+    // 获取文件名
+    public static String getFileName(File file) {
+        return file.getName().substring(0, file.getName().lastIndexOf('.'));
+    }
+
+    // 获取mec文件路径
+    public static String getMecPath() {
+        return "./doc/" + mapName + ".mec";
+    }
 }

@@ -72,7 +72,7 @@ public class MyMenuBar {
                     try {
                         Image image = new Image(new FileInputStream(file));
                         tmpCanvas.setImage(image);
-                        MyStatus.mapName = file.getName();
+                        MyStatus.mapName = MyStatus.getFileName(file);
                         MyStatus.originImg = file;
                     } catch (Exception ex) {
                     }
@@ -122,7 +122,7 @@ public class MyMenuBar {
         docMenu.setStyle("-fx-font-size:16;");
         MenuItem docEdit = new MenuItem("文档编辑");
         docEdit.setOnAction(event -> {
-            new MyNotePad(MyStatus.mapName + ".mec").getStage().show();
+            new MyNotePad(MyStatus.getMecPath()).getStage().show();
             tmpCanvas.myEditBar.loadInfo();
             redrawMapByFile();
         });
@@ -295,6 +295,7 @@ public class MyMenuBar {
                         stmt.setString(2, MD5Utils.toMD5(cfpwPF.getText()));
                         stmt.setTimestamp(3, MyStatus.id);
                         stmt.executeUpdate();
+                        stmt.clearParameters();
                         regInfo.setHeaderText("注册成功！");
                         regStage.close();
                         regInfo.show();

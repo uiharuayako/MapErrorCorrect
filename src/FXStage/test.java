@@ -19,19 +19,21 @@ public class test {
     public static void main(String[] args) {
         try{
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+
             MyStatus.myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/?serverTimezone=UTC",
                     "root",
                     "Test123456");
             MyStatus.myStm = MyStatus.myCon.createStatement();
-            ResultSet rs=null;
-            PreparedStatement ps=null;
-            ps=MyStatus.myCon.prepareStatement("select pwMD5 from maperrordb.user where name = '哒哒哒'");
-            rs= ps.executeQuery();
-            while (rs.next()){
-                System.out.println(123);
-                System.out.println(rs.getRow());
-            }
-            System.out.println(1);
+            MyStatus.myStm.execute("use maperrordb");
+//            ResultSet rs=null;
+//            PreparedStatement ps=null;
+//            ps=MyStatus.myCon.prepareStatement("select pwMD5 from maperrordb.user where name = '哒哒哒'");
+//            rs= ps.executeQuery();
+//            while (rs.next()){
+//                System.out.println(123);
+//                System.out.println(rs.getRow());
+//            }
+//            System.out.println(1);
 
         }catch (Exception e){
             e.printStackTrace();
