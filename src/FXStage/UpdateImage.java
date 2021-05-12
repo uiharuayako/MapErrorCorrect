@@ -52,7 +52,7 @@ public class UpdateImage extends Thread {
             if (protocol.equals("join")) {
                 name = comm.substring(index + 1);// 获取姓名
                 System.out.println("get name");
-                tools.addPeople(name, ID);
+                //tools.addPeople(name, ID);
             }
             if (protocol.equals("stop")) {
                 tools.deletePeople(ID);// 删掉

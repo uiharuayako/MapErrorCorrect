@@ -11,12 +11,5 @@
         <property name="serverTimezone" value="UTC" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="User Data Source" uuid="919a0fc1-956a-48a9-86e9-9a42436940fe">
-      <driver-ref>e7e40586-17e5-43b4-b71c-a0ebc6070e72</driver-ref>
-      <synchronize>true</synchronize>
-      <configured-by-url>true</configured-by-url>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
   </component>
 </project>

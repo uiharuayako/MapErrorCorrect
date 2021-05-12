@@ -8,29 +8,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="w">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FXStage/MyNetBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FXStage/SavePic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FXStage/test.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FXStage/MD5Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/313fc9b3-475a-4c08-a19d-8686e2cc9f73.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/313fc9b3-475a-4c08-a19d-8686e2cc9f73.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MapErrorCorrect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MapErrorCorrect.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/AppMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/AppMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas$1mySP.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas$1mySP.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyEditBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyEditBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/SearchUpdateTxt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/UpdateImage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyMenuBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyMenuBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/NameList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/NameList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/People.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/People.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/UpdateImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/UpdateImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/数据库构建方式.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/数据库构建方式.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/MyEditBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyEditBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/MyMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FXStage/MyStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/NameList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/NameList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/People.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/People.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXStage/ToolButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/ToolButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/UpdateImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/UpdateImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/数据库构建方式.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/数据库构建方式.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/我的地图.mec" beforeDir="false" afterPath="$PROJECT_DIR$/我的地图.mec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +170,7 @@
       <recent name="FXStage" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.SavePic">
+  <component name="RunManager" selected="应用程序.AppMain">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -332,9 +333,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.SavePic" />
-        <item itemvalue="应用程序.test" />
         <item itemvalue="应用程序.AppMain" />
+        <item itemvalue="应用程序.test" />
+        <item itemvalue="应用程序.SavePic" />
         <item itemvalue="应用程序.MyNotePad" />
       </list>
     </recent_temporary>
@@ -403,7 +404,9 @@
       <workItem from="1620605271007" duration="2177000" />
       <workItem from="1620692291734" duration="1881000" />
       <workItem from="1620713335869" duration="6955000" />
-      <workItem from="1620731877551" duration="1290000" />
+      <workItem from="1620731877551" duration="4218000" />
+      <workItem from="1620737757681" duration="7960000" />
+      <workItem from="1620821370371" duration="10877000" />
     </task>
     <task id="LOCAL-00001" summary="未修改代码">
       <created>1618823278234</created>
@@ -469,6 +472,7 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <ignored-roots>
@@ -478,7 +482,8 @@
     <MESSAGE value="众多修改，加入文件保存功能" />
     <MESSAGE value="完全完成，只差完善" />
     <MESSAGE value="spell error correct" />
-    <option name="LAST_COMMIT_MESSAGE" value="spell error correct" />
+    <MESSAGE value="删除了莫名其妙的工具信息&#10;原来程序设计的时候有一个功能是，每次更换工具都通知服务器，显示现在在用什么工具，现在我觉得这个功能莫名其妙，也没啥实际意义" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除了莫名其妙的工具信息&#10;原来程序设计的时候有一个功能是，每次更换工具都通知服务器，显示现在在用什么工具，现在我觉得这个功能莫名其妙，也没啥实际意义" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -491,16 +496,6 @@
           <properties class="java.sql.SQLException" package="java.sql" />
           <option name="timeStamp" value="18" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/FXStage/test.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/FXStage/test.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/FXStage/SavePic.java</url>
           <line>102</line>

@@ -4,6 +4,10 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.scene.paint.Color;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,18 +24,23 @@ public class MyStatus {
     public static String nickName = "Ayako";
     public static Boolean fill = false;
     // 文件存储的关键
-    public static ArrayList<MyPoint> points= new ArrayList<>();
+    public static ArrayList<MyPoint> points = new ArrayList<>();
     // 服务器的图片是否有更新
     public static boolean isUpdate = false;
     public static boolean isAutoSave = true;
     // 是否有连接服务器的意愿
     public static boolean networkConnect = false;
-
+    // 数据库相关
+    public static Connection myCon = null;
+    public static Statement myStm = null;
+    // 是否正确登录，很重要，是登录的依据
+    public static boolean rightAccount = false;
     // 作为唯一标识符
-    public final static String id = "" + System.currentTimeMillis();
+    public final static Timestamp id = new Timestamp(System.currentTimeMillis());
     // 设置备注信息文本
-    public static String infoText="请输入备注";
-    public static File originImg=new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
+    public static String infoText = "请输入备注";
+    public static File originImg = new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
+
     public static void setFontFamily(String font) {
         MyStatus.fontFamily = font;
     }
@@ -104,7 +113,7 @@ public class MyStatus {
     }
 
     // 向list中加入一个点
-    public static void addPoint(int x, int y){
+    public static void addPoint(int x, int y) {
         points.add(new MyPoint(x, y));
     }
 

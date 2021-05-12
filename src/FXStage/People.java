@@ -2,6 +2,8 @@ package FXStage;
 
 import javafx.beans.property.SimpleStringProperty;
 
+import java.sql.Timestamp;
+
 /**
  * @author Ayako
  */
@@ -20,8 +22,8 @@ public class People {
     public String getName(){
         return name.get();
     }
-    People(String n,String i){
+    People(String n, Timestamp i){
         name = new SimpleStringProperty(n);
-        ID = new SimpleStringProperty(i);
+        ID = new SimpleStringProperty(i.toString());
     }
 }

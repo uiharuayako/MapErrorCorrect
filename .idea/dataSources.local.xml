@@ -11,14 +11,12 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" qname="@" />
+          <node kind="schema">
+            <name qname="@" />
+            <name qname="maperrordb" />
+          </node>
         </introspection-scope>
       </schema-mapping>
-    </data-source>
-    <data-source name="User Data Source" uuid="919a0fc1-956a-48a9-86e9-9a42436940fe">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
-      <secret-storage>master_key</secret-storage>
-      <schema-mapping />
     </data-source>
   </component>
 </project>

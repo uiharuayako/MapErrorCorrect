@@ -1,18 +1,29 @@
 package FXStage;
 
 import icon.IconImage;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import sun.security.provider.MD5;
 
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Optional;
 
 public class MyMenuBar {
@@ -122,20 +133,191 @@ public class MyMenuBar {
         });
         docMenu.getItems().addAll(docEdit, redrawFromDoc);
         // 网络选单
-        Menu netMenu=new Menu();
+        Menu netMenu = new Menu();
         netMenu.setText("网络");
         netMenu.setStyle("-fx-font-size:16;");
-        MenuItem joinItem = new MenuItem("修改昵称");
-        joinItem.setOnAction(event -> {
-            TextInputDialog dialog = new TextInputDialog("");
-            dialog.setGraphic(IconImage.getImageView(IconImage.getImage("ICON")));
-            dialog.setTitle("昵称输入框");
-            dialog.setContentText("请输入（允许重名）：");
-            dialog.setHeaderText("输入希望使用的昵称");
-            Optional<String> result = dialog.showAndWait();
-            if (result.isPresent()){
-                MyStatus.nickName = result.get();
-            }
+        MenuItem logInItem = new MenuItem("登录");
+        logInItem.setOnAction(event -> {
+            // 加入框架
+            Stage loginStage = new Stage();
+            BorderPane loginPane = new BorderPane();
+            // 注册信息框
+            VBox loginVBox = new VBox();
+            loginVBox.setAlignment(Pos.CENTER);
+            loginVBox.setSpacing(10);
+            Label nameLabel = new Label("输入昵称:");
+            Label passwdLabel = new Label("输入密码:");
+            TextField nameTF = new TextField(MyStatus.nickName);
+            PasswordField pwPF = new PasswordField();
+            HBox nameHB = new HBox();
+            nameHB.setAlignment(Pos.CENTER);
+            nameHB.getChildren().addAll(nameLabel, nameTF);
+            HBox pwHB = new HBox();
+            pwHB.setAlignment(Pos.CENTER);
+            pwHB.getChildren().addAll(passwdLabel, pwPF);
+            loginVBox.getChildren().addAll(nameHB, pwHB);
+            // 搞个按钮
+            Button loginB = new Button("登录");
+            loginB.setPrefSize(50, 40);
+            loginB.setDisable(true);
+            // 用户名与密码必须非空，才能使用登录按键
+            loginPane.setOnMouseMoved(event1 -> {
+                if (!nameTF.getText().isEmpty() && !pwPF.getText().isEmpty()) {
+                    loginB.setDisable(false);
+                }
+            });
+            // 开始时禁用
+            Label rightLabel = new Label();
+            rightLabel.setAlignment(Pos.CENTER);
+            loginB.setOnAction(event1 -> {
+                PreparedStatement stmt = null;
+                try {
+                    // 当登录按钮被按下
+                    // 检查昵称是否存在
+                    boolean isExist = false;
+                    PreparedStatement ps = MyStatus.myCon.prepareStatement("select name from maperrordb.user where name = '" + nameTF.getText() + "'");
+                    ResultSet rs = ps.executeQuery();
+                    Alert loginInfo = new Alert(Alert.AlertType.INFORMATION, null, new ButtonType("确认"));
+                    loginInfo.initStyle(StageStyle.UTILITY);
+                    loginInfo.setTitle("登录信息框框");
+                    while (rs.next()) {
+                        isExist = true;
+                    }
+                    // 如果不存在
+                    if (!isExist) {
+                        loginInfo.setHeaderText("该昵称不存在");
+                        rightLabel.setText("昵称不存在");
+                        loginInfo.show();
+                    } else {
+                        // 如果昵称确实存在
+                        ps = MyStatus.myCon.prepareStatement("select pwMD5 from maperrordb.user where name = '" + nameTF.getText() + "'");
+                        rs = ps.executeQuery();
+                        rightLabel.setText("密码错误！");
+                        loginInfo.setHeaderText("用户存在然而密码错了QAQ");
+                        while (rs.next()) {
+                            // 如果用户名对应的密码md5正确
+                            if (rs.getString(1).equals(MD5Utils.toMD5(pwPF.getText()))) {
+                                // 更改内部状态：证明已经登录
+                                MyStatus.rightAccount = true;
+                                MyStatus.nickName = nameTF.getText();
+                                loginInfo.setHeaderText("登陆成功哒！当前用户：" + MyStatus.nickName);
+                                loginStage.close();
+                            }
+                        }
+                        loginInfo.show();
+                    }
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
+
+            });
+            VBox rightVB = new VBox();
+            rightVB.setAlignment(Pos.CENTER);
+            rightVB.setSpacing(10);
+            rightVB.getChildren().addAll(rightLabel, loginB);
+            // 整体布局
+            loginPane.setLeft(loginVBox);
+            loginPane.setCenter(rightVB);
+            loginPane.setMinWidth(400);
+            // 下面这个选项开始设成true，但是不好，会挡住之后的弹窗
+            loginStage.setAlwaysOnTop(false);
+            loginStage.setScene(new Scene(loginPane));
+            loginStage.setTitle("登录已有账号");
+            loginStage.getIcons().add(IconImage.getImage("ICON"));
+            loginStage.show();
+        });
+        MenuItem signUpItem = new MenuItem("注册");
+        signUpItem.setOnAction(event -> {
+            // 加入框架
+            Stage regStage = new Stage();
+            BorderPane regPane = new BorderPane();
+            // 注册信息框
+            VBox regVBox = new VBox();
+            regVBox.setAlignment(Pos.CENTER);
+            regVBox.setSpacing(10);
+            Label nameLabel = new Label("输入昵称:");
+            Label passwdLabel = new Label("输入密码:");
+            Label confpwLabel = new Label("确认密码:");
+            TextField nameTF = new TextField("请输入昵称");
+            PasswordField pwPF = new PasswordField();
+            PasswordField cfpwPF = new PasswordField();
+            HBox nameHB = new HBox();
+            nameHB.setAlignment(Pos.CENTER);
+            nameHB.getChildren().addAll(nameLabel, nameTF);
+            HBox pwHB = new HBox();
+            pwHB.setAlignment(Pos.CENTER);
+            pwHB.getChildren().addAll(passwdLabel, pwPF);
+            HBox cfpwHB = new HBox();
+            cfpwHB.setAlignment(Pos.CENTER);
+            cfpwHB.getChildren().addAll(confpwLabel, cfpwPF);
+            regVBox.getChildren().addAll(nameHB, pwHB, cfpwHB);
+            // 搞个按钮
+            Button confB = new Button("注册");
+            confB.setPrefSize(50, 40);
+            // 开始时禁用
+            confB.setDisable(true);
+            // 搞个确认两次密码相同的Label
+            Label samePW = new Label();
+            samePW.setAlignment(Pos.CENTER);
+            regPane.setOnMouseMoved(event1 -> {
+                // 如果密码和确认密码同时非空，且一样
+                if (!pwPF.getText().isEmpty() && !cfpwPF.getText().isEmpty() && cfpwPF.getText().equals(pwPF.getText())) {
+                    samePW.setText("√");
+                    // 启用注册按钮
+                    confB.setDisable(false);
+                }
+                // 如果不一样
+                if (!pwPF.getText().isEmpty() && !cfpwPF.getText().isEmpty() && !cfpwPF.getText().equals(pwPF.getText())) {
+                    samePW.setText("密码不一致");
+                }
+            });
+            confB.setOnAction(event1 -> {
+                // 改名
+                MyStatus.nickName = nameTF.getText();
+                PreparedStatement stmt = null;
+                try {
+                    // 检测重名
+                    boolean isRepreted = false;
+                    PreparedStatement ps = MyStatus.myCon.prepareStatement("select name from maperrordb.user where name = '" + nameTF.getText() + "'");
+                    ResultSet rs = ps.executeQuery();
+                    Alert regInfo = new Alert(Alert.AlertType.INFORMATION, null, new ButtonType("确认"));
+                    regInfo.initStyle(StageStyle.UTILITY);
+                    regInfo.setTitle("注册信息框框");
+                    while (rs.next()) {
+                        isRepreted = true;
+                        regInfo.setHeaderText("该昵称已经被注册，换一个吧QAQ");
+                        samePW.setText("昵称重复！");
+                        regInfo.show();
+                    }
+                    if (!isRepreted) {
+                        stmt = MyStatus.myCon.prepareStatement("insert into user(name,pwMD5,id) values(?,?,?)");
+                        stmt.setString(1, MyStatus.nickName);
+                        stmt.setString(2, MD5Utils.toMD5(cfpwPF.getText()));
+                        stmt.setTimestamp(3, MyStatus.id);
+                        stmt.executeUpdate();
+                        regInfo.setHeaderText("注册成功！");
+                        regStage.close();
+                        regInfo.show();
+                    }
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
+
+            });
+            VBox rightVB = new VBox();
+            rightVB.setAlignment(Pos.CENTER);
+            rightVB.setSpacing(10);
+            rightVB.getChildren().addAll(samePW, confB);
+            // 整体布局
+            regPane.setLeft(regVBox);
+            regPane.setCenter(rightVB);
+            regPane.setMinWidth(400);
+            // 下面这个选项开始设成true，但是不好，会挡住之后的弹窗
+            regStage.setAlwaysOnTop(false);
+            regStage.setScene(new Scene(regPane));
+            regStage.setTitle("注册新的账号");
+            regStage.getIcons().add(IconImage.getImage("ICON"));
+            regStage.show();
         });
         MenuItem connectNet = new MenuItem("与网络连接");
         connectNet.setStyle("-fx-font-size:14;");
@@ -144,20 +326,21 @@ public class MyMenuBar {
                 if (MyStatus.networkConnect) {
                     connectNet.setText("与网络连接");
                     tmpCanvas.disconnect();
-                    joinItem.setDisable(false);
+                    signUpItem.setDisable(false);
                     MyStatus.networkConnect = false;
                 } else {
                     connectNet.setText("与网络断开");
                     tmpCanvas.connectNet();
-                    joinItem.setDisable(true);
+                    signUpItem.setDisable(true);
                     MyStatus.networkConnect = true;
                 }
-            } catch (Exception e){}
+            } catch (Exception e) {
+            }
             tmpCanvas.netLabel.update();
         });
-        netMenu.getItems().addAll(connectNet,joinItem);
+        netMenu.getItems().addAll(connectNet, logInItem, signUpItem);
         // 添加进menu
-        myBar.getMenus().addAll(fileMenu, editMenu, docMenu);
+        myBar.getMenus().addAll(fileMenu, editMenu, docMenu, netMenu);
     }
 
     public MenuBar getMenu() {
