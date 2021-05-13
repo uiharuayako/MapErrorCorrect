@@ -49,7 +49,7 @@ public class MyDBProcess {
         if (MyStatus.rightAccount) {
             // 获取图片的同时必须获取其error信息
             try {
-                //创建输出流
+                //创建输出流，同时清空本地文件
                 FileOutputStream mecOut = new FileOutputStream(MyStatus.getMecPath());
                 OutputStream picOut = new FileOutputStream("./我的作品/" + MyStatus.mapName + ".png");
                 MyStatus.originImg=new File("./我的作品/" + MyStatus.mapName + ".png");
@@ -59,7 +59,7 @@ public class MyDBProcess {
                     Blob blob = rs.getBlob("imgData");
                     picOut.write(blob.getBytes(1, (int) blob.length()));
                     String errStr = rs.getString("fileErrors");
-                    //将多行文本框中的内容写到file指向的文件中去
+                    //将服务器中的内容写到file指向的文件中去
                     try {
                         mecOut.write(errStr.getBytes());
                     } catch (Exception e) {
