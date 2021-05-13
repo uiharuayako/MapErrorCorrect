@@ -42,6 +42,7 @@ public class MyDBProcess {
 
         }
     }
+
     // 获取当前mapname的图片
     public static void getPicNow() {
         // 所有操作必须正确登录账户才能进行
@@ -51,12 +52,13 @@ public class MyDBProcess {
                 //创建输出流
                 FileOutputStream mecOut = new FileOutputStream(MyStatus.getMecPath());
                 OutputStream picOut = new FileOutputStream("./我的作品/" + MyStatus.mapName + ".png");
+                MyStatus.originImg=new File("./我的作品/" + MyStatus.mapName + ".png");
                 Statement statement = MyStatus.myCon.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ResultSet rs = statement.executeQuery("select imgData,fileErrors from pics where fileName = '" + MyStatus.mapName + "'");
                 while (rs.next()) {
                     Blob blob = rs.getBlob("imgData");
                     picOut.write(blob.getBytes(1, (int) blob.length()));
-                    String errStr=rs.getString("fileErrors");
+                    String errStr = rs.getString("fileErrors");
                     //将多行文本框中的内容写到file指向的文件中去
                     try {
                         mecOut.write(errStr.getBytes());
@@ -71,20 +73,22 @@ public class MyDBProcess {
             }
         }
     }
+
     // 添加记录
-    public static void addLog(String info){
+    public static void addLog(String info) {
         // 当然也要检查正确的账户
-        if(MyStatus.rightAccount){
-            try{
-                PreparedStatement ps=MyStatus.myCon.prepareStatement("insert into logs(userName,time,infoLine) values(?,?,?)");
-                ps.setString(1,MyStatus.nickName);
-                ps.setTimestamp(2,MyStatus.getNowTime());
-                ps.setString(3,info);
-            }catch (Exception e){
+        if (MyStatus.rightAccount) {
+            try {
+                PreparedStatement ps = MyStatus.myCon.prepareStatement("insert into logs(userName,time,infoLine) values(?,?,?)");
+                ps.setString(1, MyStatus.nickName);
+                ps.setTimestamp(2, MyStatus.getNowTime());
+                ps.setString(3, info);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
+
     public static String mec2String() {
         StringBuilder buffer = new StringBuilder();
         BufferedReader bf = null;
@@ -99,5 +103,23 @@ public class MyDBProcess {
             e.printStackTrace();
         }
         return buffer.toString();
+    }
+
+    // 切换在线状态
+    public static void setOnline(boolean isOnline) {
+        try {
+            if (isOnline) {
+                MyStatus.myStm.execute("update user set online = 1 where name = '" + MyStatus.nickName + "'");
+                MyStatus.myStm.execute("update user set workMapName = "+MyStatus.mapName+" where name = '" + MyStatus.nickName + "'");
+            } else {
+                if (MyStatus.rightAccount) {
+                    MyStatus.myStm.execute("update user set online = 0 where name = '" + MyStatus.nickName + "'");
+                    MyStatus.myCon.close();
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 }

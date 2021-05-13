@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class test {
     public static void main(String[] args) {
         try{
+            System.out.println(true);
             new File(("12345.txt")).mkdir();
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 

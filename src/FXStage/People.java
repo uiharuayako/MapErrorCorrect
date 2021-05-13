@@ -9,12 +9,14 @@ import java.sql.Timestamp;
  */
 public class People {
     public SimpleStringProperty name;
-    public SimpleStringProperty ID;
-    public void setID(String id){
-        ID.set(id);
+    public SimpleStringProperty isOnline;
+
+
+    public void setIsOnline(String id){
+        isOnline.set(id);
     }
-    public String getID(){
-        return ID.get();
+    public String getIsOnline(){
+        return isOnline.get();
     }
     public void setName(String name){
         this.name.set(name);
@@ -22,8 +24,8 @@ public class People {
     public String getName(){
         return name.get();
     }
-    People(String n, Timestamp i){
+    People(String n, boolean is){
         name = new SimpleStringProperty(n);
-        ID = new SimpleStringProperty(i.toString());
+        isOnline = new SimpleStringProperty(is?"在线":"离线");
     }
 }

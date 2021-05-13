@@ -29,7 +29,7 @@ public class AppMain extends Application {
             MyStatus.myStm = MyStatus.myCon.createStatement();
             MyStatus.myStm.execute("CREATE DATABASE IF NOT EXISTS MapErrorDB");
             MyStatus.myStm.execute("USE MapErrorDB");
-            MyStatus.myStm.execute("CREATE TABLE IF NOT EXISTS User(name char(50),pwMD5 char(32),id timestamp)");
+            MyStatus.myStm.execute("CREATE TABLE IF NOT EXISTS User(name char(50),pwMD5 char(32),id timestamp,online bit,workMapName char(50))");
             MyStatus.myStm.execute("CREATE TABLE IF NOT EXISTS Pics(fileName char(50),imgData mediumblob,fileErrors mediumtext)");
             MyStatus.myStm.execute("CREATE TABLE IF NOT EXISTS Logs(userName char(50),time timestamp,infoLine text)");
         }catch (SQLException e){
@@ -66,7 +66,7 @@ public class AppMain extends Application {
         primaryStage.setScene(new Scene(bp));
         primaryStage.setTitle("地图错误改正工具 beta 0.1.0 -by Uiharu");
         primaryStage.show();
-
+        primaryStage.setOnHiding( event -> {MyDBProcess.setOnline(false);} );
     }
 
 

@@ -8,21 +8,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="w">
-      <change afterPath="$PROJECT_DIR$/src/FXStage/ImageCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FXStage/ImageList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/313fc9b3-475a-4c08-a19d-8686e2cc9f73.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/313fc9b3-475a-4c08-a19d-8686e2cc9f73.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/12345.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/空白底图.mec" beforeDir="false" afterPath="$PROJECT_DIR$/doc/空白底图.mec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/AppMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/AppMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas$1mySP.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas$1mySP.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyCanvas.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyMenuBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/MyMenuBar.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/NameList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/NameList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/People.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/People.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/UpdateImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/UpdateImage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/FXStage/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/复用方式.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/复用方式.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MapErrorCorrect/数据库构建方式.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MapErrorCorrect/数据库构建方式.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FXStage/ImageCell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FXStage/ImageList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/ImageList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/MyDBProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyDBProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/MyMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyMenuBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/MyNetBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/MyNetBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/NameList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/NameList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FXStage/People.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/People.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FXStage/UpdateImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/UpdateImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FXStage/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXStage/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/我的作品/空白底图AutoSave.png" beforeDir="false" afterPath="$PROJECT_DIR$/我的作品/空白底图AutoSave.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Network/Sever.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Network/Sever.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/复用方式.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/复用方式.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/数据库构建方式.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/数据库构建方式.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,8 +250,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SeverFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Network.SeverFX" />
+    <configuration name="SeverApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Network.SeverApp" />
       <module name="MapErrorCorrect" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -319,15 +331,16 @@
     <list>
       <item itemvalue="应用程序.Main" />
       <item itemvalue="应用程序.AppMain" />
-      <item itemvalue="应用程序.SeverFX" />
       <item itemvalue="应用程序.test" />
       <item itemvalue="应用程序.MyNotePad" />
       <item itemvalue="应用程序.MyDBProcess" />
+      <item itemvalue="应用程序.SeverApp" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.AppMain" />
         <item itemvalue="应用程序.test" />
+        <item itemvalue="应用程序.SeverApp" />
         <item itemvalue="应用程序.MyDBProcess" />
         <item itemvalue="应用程序.MyNotePad" />
       </list>
@@ -405,7 +418,7 @@
       <workItem from="1620856720397" duration="366000" />
       <workItem from="1620857100230" duration="184000" />
       <workItem from="1620857320162" duration="5668000" />
-      <workItem from="1620863014838" duration="1682000" />
+      <workItem from="1620863014838" duration="9962000" />
     </task>
     <task id="LOCAL-00001" summary="未修改代码">
       <created>1618823278234</created>
@@ -495,6 +508,11 @@
           <properties class="java.sql.SQLException" package="java.sql" />
           <option name="timeStamp" value="18" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/FXStage/test.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

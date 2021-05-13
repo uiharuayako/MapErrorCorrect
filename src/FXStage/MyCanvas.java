@@ -79,9 +79,10 @@ public class MyCanvas {
     //重做相关
     private Canvas newCanvas;
 
-    public MyCanvas(MyEditBar editBar,MyNetBar netBar) {
+    public MyCanvas(MyEditBar editBar, MyNetBar netBar) {
         //右边选项卡实现
         myEditBar = editBar;
+        myNetBar = netBar;
         //名单工具
         tools = new NameList();
         //网络声明
@@ -131,13 +132,17 @@ public class MyCanvas {
         } catch (IOException e) {
         }
         //以下是绘图主函数
-        tools.addPeople(MyStatus.nickName, MyStatus.id);
         //当鼠标移动
         drawingCanvas.setOnMouseMoved(event ->
         {
             update();
             //检测当前鼠标附近是否有对象图像
             infoLabel.setText("当前位置没有图形");
+            // 如果收到重绘指令，则重绘
+            if (myNetBar.changePic) {
+                redrawMapByFile();
+                myNetBar.changePic = false;
+            }
             for (int i = 0; i < myEditBar.posOfPois.size(); i++) {
                 MyPoint searchPoi = myEditBar.posOfPois.get(i);
                 //鼠标x-25<searchPoi.x<鼠标x+25
@@ -317,15 +322,17 @@ public class MyCanvas {
             myEditBar.loadInfo();
         }
         drawFromFile();
+        myNetBar.update();
     }
 
     public void drawFromFile() {
         for (InfoLine myLine : myEditBar.myInfo) {
             // 遍历myInfo
-           drawFromText(myLine);
+            drawFromText(myLine);
         }
     }
-    public void drawFromText(InfoLine myLine){
+
+    public void drawFromText(InfoLine myLine) {
         loadLine(myLine);
         // 开始模拟一个正常画图
         x1 = MyStatus.points.get(0).getX();
@@ -445,6 +452,7 @@ public class MyCanvas {
         gc.stroke();
         MyStatus.points.clear();
     }
+
     public void setImage(Image newImage) {
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, 850, 850);
@@ -453,6 +461,7 @@ public class MyCanvas {
         listCanvas.add(drawingCanvas);
         autoSave();
     }
+
     public void connectNet() {
         try {
             mySocket = new Socket("127.0.0.1", 4004);
@@ -463,6 +472,7 @@ public class MyCanvas {
             netLabel.update();
         }
     }
+
     void update() {
         if (MyStatus.isUpdate) {
             try {
@@ -582,8 +592,6 @@ public class MyCanvas {
             //         stop$id
             myPS.println("join$" + MyStatus.id + "$" + name);
             myPS.flush();
-
-            tools.addPeople(MyStatus.nickName, MyStatus.id);
             myUpdateThread = new UpdateImage(mySocket);
             myUpdateThread.start();
         } catch (Exception e) {
@@ -640,6 +648,8 @@ public class MyCanvas {
         MyStatus.points.clear();
         // 逻辑上，地图每更新一次必须update，就是重新load
         myEditBar.loadInfo();
+        // 顺便更新一次netbar
+        myNetBar.update();
     }
 
     // 这个函数旨在把thisLine里的两种信息load进MyStatus里
@@ -647,5 +657,15 @@ public class MyCanvas {
         MyStatus.setStatus(thisLine.statusStr);
         MyStatus.str2Points(thisLine.pointStr);
     }
+
     // 如上所述，必须完成2个功能，一个是把x，y列表转换为points串结构，第二个是把points串结构还原为points
+    public void redrawMapByFile() {
+        try {
+            setImage(new Image(new FileInputStream(MyStatus.originImg)));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        myEditBar.loadInfo();
+        drawFromFile();
+    }
 }

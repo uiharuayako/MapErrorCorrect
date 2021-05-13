@@ -61,57 +61,6 @@ public class Sever implements Runnable {
             comm = comm.substring(index + 1);
             index = comm.indexOf("$");
             ID = comm.substring(0, index).trim();
-            if (protocol.equals("sync")) {
-                try {
-                    // 解析长度
-                    comm = comm.substring(index + 1);
-                    index = comm.indexOf("$");
-                    String filesize = comm.substring(0, index).trim();
-                    // 输出流
-                    fos = new FileOutputStream(file);
-                    file_size = Integer.parseInt(filesize);
-                    is = s.getInputStream();
-                    //size为每次接收数据包的长度
-                    int size = 0;
-                    long count = 0;
-                    byte[] b1 = new byte[file_size];
-                    //**使用while循环接收数据包*//*
-/*                    do{
-                        fos.write(buffer, 0, size);
-                        count += size;
-                        fos.flush();
-                        System.out.println("服务器端接收到数据包，大小为" + size);
-                    }while(count-36 < file_size*//*(size = is.read(buffer)) != -1*//*);*/
-                    Thread.sleep(50);
-                    while (count < file_size) {
-                        //从输入流中读取一个数据包
-                        size = is.read(buffer);
-
-                        //将刚刚读取的数据包写到本地文件中去
-                        fos.write(buffer, 0, size);
-                        fos.flush();
-
-                        //将已接收到文件的长度+size
-                        count += size;
-                        System.out.println("服务器端接收到数据包，大小为" + size);
-                    }
-                    System.out.println("end");
-                    for (int i = 0; i < SeverApp.mySevers.size(); i++) {
-                        Sever thisSever = SeverApp.mySevers.get(i);
-                        System.out.println("当前id" + ID);
-                        System.out.println("get id" + thisSever.ID);
-                        if (!thisSever.ID.equals(ID)) {
-                            thisSever.sendImage();
-                        } else {
-                            System.out.println("同id，不发送");
-                        }
-                    }
-                } catch (FileNotFoundException e) {
-                    System.out.println("服务器写文件失败");
-                } catch (Exception e) {
-                    System.out.println("服务器：客户端断开连接");
-                }
-            }
             if (protocol.equals("join")) {
                 name = comm.substring(index + 1);// 获取姓名
                 for (int i = 0; i < SeverApp.mySevers.size(); i++) {

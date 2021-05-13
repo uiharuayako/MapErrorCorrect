@@ -1019,5 +1019,13 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
     </column>
+    <column id="301" parent="289" name="online">
+      <Position>4</Position>
+      <DataType>bit(1)|0s</DataType>
+    </column>
+    <column id="302" parent="289" name="workMapName">
+      <Position>5</Position>
+      <DataType>char(50)|0s</DataType>
+    </column>
   </database-model>
 </dataSource>

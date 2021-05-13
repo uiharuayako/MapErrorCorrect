@@ -129,12 +129,12 @@ public class MyMenuBar {
         docEdit.setOnAction(event -> {
             new MyNotePad(MyStatus.getMecPath()).getStage().show();
             tmpCanvas.myEditBar.loadInfo();
-            redrawMapByFile();
+            tmpCanvas.redrawMapByFile();
         });
         MenuItem redrawFromDoc = new MenuItem("文档重绘");
         redrawFromDoc.setStyle("-fx-font-size:16;");
         redrawFromDoc.setOnAction(event -> {
-            redrawMapByFile();
+            tmpCanvas.redrawMapByFile();
         });
         docMenu.getItems().addAll(docEdit, redrawFromDoc);
         // 网络选单
@@ -207,7 +207,9 @@ public class MyMenuBar {
                                 MyStatus.nickName = nameTF.getText();
                                 loginInfo.setHeaderText("登陆成功哒！当前用户：" + MyStatus.nickName);
                                 MyDBProcess.addLog("用户"+MyStatus.nickName+"登录成功");
+                                MyDBProcess.setOnline(true);
                                 loginStage.close();
+                                tmpCanvas.myNetBar.update();
                             }
                         }
                         loginInfo.show();
@@ -215,7 +217,6 @@ public class MyMenuBar {
                 } catch (Exception throwables) {
                     throwables.printStackTrace();
                 }
-
             });
             VBox rightVB = new VBox();
             rightVB.setAlignment(Pos.CENTER);
@@ -304,9 +305,10 @@ public class MyMenuBar {
                         stmt.setTimestamp(3, MyStatus.id);
                         stmt.executeUpdate();
                         stmt.clearParameters();
-                        regInfo.setHeaderText("注册成功！");
+                        regInfo.setHeaderText("注册成功！已经自动登录");
                         MyDBProcess.addLog("用户"+MyStatus.nickName+"注册成功");
-                        tmpCanvas.netLabel.update();
+                        MyDBProcess.setOnline(true);
+                        tmpCanvas.myNetBar.update();
                         regStage.close();
                         regInfo.show();
                     }
@@ -347,7 +349,7 @@ public class MyMenuBar {
                 }
             } catch (Exception e) {
             }
-            tmpCanvas.netLabel.update();
+//            tmpCanvas.netLabel.update();
         });
         netMenu.getItems().addAll(connectNet, logInItem, signUpItem);
         // 添加进menu
@@ -356,16 +358,5 @@ public class MyMenuBar {
 
     public MenuBar getMenu() {
         return myBar;
-    }
-
-    //使用文本文档和原图像重绘
-    public void redrawMapByFile() {
-        try {
-            tmpCanvas.setImage(new Image(new FileInputStream(MyStatus.originImg)));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        tmpCanvas.myEditBar.loadInfo();
-        tmpCanvas.drawFromFile();
     }
 }

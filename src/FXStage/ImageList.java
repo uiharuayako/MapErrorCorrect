@@ -9,13 +9,14 @@ import java.util.List;
  * @author Ayako
  */
 public class ImageList {
-    public static List<ImageCell> myImageList=new ArrayList<>();
+    public static List<String> myImageList=new ArrayList<>();
     public static void update(){
         try {
+            myImageList.clear();
             PreparedStatement ps=MyStatus.myCon.prepareStatement("select fileName from pics");
             ResultSet rs= ps.executeQuery();
             while (rs.next()){
-                myImageList.add(new ImageCell(rs.getString(1)));
+                myImageList.add(rs.getString(1));
             }
         } catch (Exception throwables) {
             throwables.printStackTrace();
