@@ -1,7 +1,12 @@
 package Network;
 
+import FXStage.MyStatus;
+
 import java.io.*;
 import java.net.Socket;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Objects;
 
 public class Sever implements Runnable {
     // 建立连接
@@ -11,6 +16,7 @@ public class Sever implements Runnable {
     // 用户相关
     String ID;
     String name;
+    String mapName;
     // 标志进程是否结束
     boolean exit = false;
 
@@ -20,21 +26,6 @@ public class Sever implements Runnable {
 
     @Override
     public void run() {
-        for (Sever thisSever : SeverApp.mySevers) {
-            try {
-                if(!thisSever.ID.equals(ID)) {
-                    PrintStream myPS = new PrintStream(s.getOutputStream());
-                    // 命令格式：sync$id$文件长度$当前工具
-                    //         join$id$你的昵称
-                    //         stop$id
-                    myPS.println("join$" + thisSever.ID + "$" + thisSever.name);
-                    myPS.flush();
-                    Thread.sleep(50);
-                }
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        }
         while (!exit) {
             comm = null;
             System.out.println("start");
@@ -50,53 +41,52 @@ public class Sever implements Runnable {
             // 解析协议
             int index = comm.indexOf("$");
             String protocol = comm.substring(0, index);
-            // 解析id
+            // 解析名称
             comm = comm.substring(index + 1);
             index = comm.indexOf("$");
-            ID = comm.substring(0, index).trim();
-            if (protocol.equals("join")) {
-                name = comm.substring(index + 1);// 获取姓名
+            name = comm.substring(0, index).trim();
+            try {
+                PreparedStatement ps = MyStatus.myCon.prepareStatement("select workMapName from user where name = '" + name + "'");
+                ResultSet rs= ps.executeQuery();
+                while (rs.next()){
+                    mapName = rs.getString(1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if ("sync".equals(protocol)) {
+                // 获取姓名
+                name = comm.substring(index + 1);
                 for (int i = 0; i < SeverApp.mySevers.size(); i++) {
                     Sever thisSever = SeverApp.mySevers.get(i);
-                    System.out.println("当前id" + ID);
-                    System.out.println("get id" + thisSever.ID);
-                    if (!thisSever.ID.equals(ID)) {
-                        thisSever.sendMessage(ID,name,0);
+                    System.out.println("当前名称：" + name);
+                    System.out.println("对方名称：" + thisSever.name);
+                    String thisMapName = null;
+                    try {
+                        PreparedStatement ps = MyStatus.myCon.prepareStatement("select workMapName from user where name = '" + thisSever.name + "'");
+                        ResultSet rs= ps.executeQuery();
+                        while (rs.next()){
+                            thisMapName = rs.getString(1);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    // 如果当前地图名，和对方地图名相同
+                    if (!Objects.equals(thisMapName, mapName)) {
+                        // 发送消息
+                        thisSever.sendMessage();
                     } else {
                         System.out.println("同id，不发送");
                     }
-                }
-            }
-            if (protocol.equals("stop")) {
-                exit = true;
-                for (Sever thisSever : SeverApp.mySevers) {
-                    System.out.println("当前id" + ID);
-                    System.out.println("get id" + thisSever.ID);
-                    if (!thisSever.ID.equals(ID)) {
-                        thisSever.sendMessage(ID,name,1);
-                    } else {
-                        System.out.println("同id，不发送");
-                    }
-                }
-                try {
-                    s.close();
-                } catch (Exception e) {
                 }
             }
         }
     }
 
-    void sendMessage(String newID,String newName,int cho) {
+    void sendMessage() {
         try {
             PrintStream myPS = new PrintStream(s.getOutputStream());
-            // 命令格式：sync$id$文件长度$当前工具
-            //         join$id$你的昵称
-            //         stop$id
-            if (cho == 1) {
-                myPS.println("stop$" + newName);
-            } else {
-                myPS.println("join$" + newID + "$" + newName);
-            }
+            myPS.println("sync$");
             myPS.flush();
             Thread.sleep(50);
         } catch (Exception e1) {

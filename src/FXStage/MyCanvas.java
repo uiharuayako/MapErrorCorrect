@@ -476,14 +476,13 @@ public class MyCanvas {
     void update() {
         if (MyStatus.isUpdate) {
             try {
-                File asImageFile = new File("./我的作品/" + MyStatus.mapName + "AutoSave.png");
-                if (asImageFile.exists()) {
-                    Image image = new Image(new FileInputStream(asImageFile));
-                    setImage(image);
-                }
-            } catch (IOException ignored) {
-            }
+                MyDBProcess.getPicNow();
+                myEditBar.loadInfo();
+                redrawMapByFile();
+                myNetBar.update();
 
+            } catch (Exception ignored) {
+            }
             MyStatus.isUpdate = false;
         }
     }
@@ -587,10 +586,10 @@ public class MyCanvas {
         try {
             assert mySocket != null;
             PrintStream myPS = new PrintStream(mySocket.getOutputStream());
-            // 命令格式：sync$id$文件长度$当前工具
-            //         join$id$你的昵称
-            //         stop$id
-            myPS.println("join$" + MyStatus.id + "$" + name);
+            // 命令格式：sync$name
+            //         join$name
+            //         stop$name
+            myPS.println("join$" + name);
             myPS.flush();
             myUpdateThread = new UpdateImage(mySocket);
             myUpdateThread.start();
@@ -659,6 +658,7 @@ public class MyCanvas {
     }
 
     // 如上所述，必须完成2个功能，一个是把x，y列表转换为points串结构，第二个是把points串结构还原为points
+    // 重绘
     public void redrawMapByFile() {
         try {
             setImage(new Image(new FileInputStream(MyStatus.originImg)));
