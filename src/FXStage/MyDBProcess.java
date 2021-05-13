@@ -46,15 +46,26 @@ public class MyDBProcess {
     public static void getPicNow() {
         // 所有操作必须正确登录账户才能进行
         if (MyStatus.rightAccount) {
+            // 获取图片的同时必须获取其error信息
             try {
-                OutputStream out = new FileOutputStream("./我的作品/" + MyStatus.mapName + ".png");
+                //创建输出流
+                FileOutputStream mecOut = new FileOutputStream(MyStatus.getMecPath());
+                OutputStream picOut = new FileOutputStream("./我的作品/" + MyStatus.mapName + ".png");
                 Statement statement = MyStatus.myCon.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                ResultSet rs = statement.executeQuery("select imgData from pics where fileName = '" + MyStatus.mapName + "'");
+                ResultSet rs = statement.executeQuery("select imgData,fileErrors from pics where fileName = '" + MyStatus.mapName + "'");
                 while (rs.next()) {
                     Blob blob = rs.getBlob("imgData");
-                    out.write(blob.getBytes(1, (int) blob.length()));
+                    picOut.write(blob.getBytes(1, (int) blob.length()));
+                    String errStr=rs.getString("fileErrors");
+                    //将多行文本框中的内容写到file指向的文件中去
+                    try {
+                        mecOut.write(errStr.getBytes());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-                out.close();
+                picOut.close();
+                mecOut.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }

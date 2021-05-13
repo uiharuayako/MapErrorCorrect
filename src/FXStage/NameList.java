@@ -7,6 +7,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Ayako
+ */
 public class NameList {
 
     public static List<People> myNameList=new ArrayList<>();

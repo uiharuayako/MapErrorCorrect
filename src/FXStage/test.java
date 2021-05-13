@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class test {
     public static void main(String[] args) {
         try{
+            new File(("12345.txt")).mkdir();
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 
             MyStatus.myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/?serverTimezone=UTC",

@@ -74,6 +74,11 @@ public class MyMenuBar {
                         tmpCanvas.setImage(image);
                         MyStatus.mapName = MyStatus.getFileName(file);
                         MyStatus.originImg = file;
+                        // 下面这行代码是为了创建文件
+                        new File(MyStatus.getMecPath()).createNewFile();
+                        // 把文件添加到数据库
+                        MyDBProcess.savePic();
+                        MyDBProcess.addLog("上传图片");
                     } catch (Exception ex) {
                     }
                 }
@@ -301,6 +306,7 @@ public class MyMenuBar {
                         stmt.clearParameters();
                         regInfo.setHeaderText("注册成功！");
                         MyDBProcess.addLog("用户"+MyStatus.nickName+"注册成功");
+                        tmpCanvas.netLabel.update();
                         regStage.close();
                         regInfo.show();
                     }
