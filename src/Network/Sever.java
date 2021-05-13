@@ -18,7 +18,7 @@ public class Sever implements Runnable {
     // 用户相关
     String ID;
     String name;
-    // 标志进程是否结实
+    // 标志进程是否结束
     boolean exit = false;
 
     Sever(Socket mySS) {
